@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subida de Archivos</title>
+</head>
+<body>
+<h1>Subida de Archivos</h1>
+<form action="Validacion_subir_archivo.php" method="post" enctype="multipart/form-data">
+    <!-- de esta forma poder permitir que el servidor pueda conocer que vamos a enviar un archivo con la información habitual de un formulario-->
+    Introduce el fichero: <input type="file" name="fichero"><br>
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+    <input type="submit" value="Enviar fichero">
+</form>
+</body>
+</html>
