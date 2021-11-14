@@ -3,7 +3,7 @@
 <head><title>USO DE GET</title></head>
 <body>
 <h1>FORMULARIO GET</h1>
-<form action="GET_2.php" method="get">
+<form action="4.2.4 Ver GET.php" method="get">
     Nombre:<br/>
     <input type="text" name="nombre"/><br/>
     E-mail:<br/>

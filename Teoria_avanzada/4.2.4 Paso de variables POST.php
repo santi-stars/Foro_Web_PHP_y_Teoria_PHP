@@ -3,7 +3,7 @@
 <head><title>USO DE POST</title></head>
 <body>
 <h1>FORMULARIO POST</h1>
-<form action="POST_2.php" method="post">
+<form action="4.2.4 Ver POST.php" method="post">
     Nombre:<br/>
     <input type="text" name="nombre"/><br/>
     E-mail:<br/>
