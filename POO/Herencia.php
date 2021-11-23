@@ -12,7 +12,7 @@ class B extends A
 {
     function Be()
     {
-        parent::MetodoX(); //similar a -> A::MetodoX()
+        parent::MetodoX(); //similar a -> A::MetodoX() para llamar al constructor de la clase A o Padre
     }
 }
 
