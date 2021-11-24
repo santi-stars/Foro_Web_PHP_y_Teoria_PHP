@@ -13,26 +13,29 @@ num_rows() -1. Sin embargo, si el conjunto de resultados está vacío (mysql_
 num_rows() == 0), una búsqueda a 0 fallará con un E_WARNING y mysql_data_
 seek() devolverá FALSE.
  */
+$dbname = "foroMotos";
 $host = "localhost";
 $user = "root";
-$pass = "";
-$db = "empresa";
+$password = "contraseñaForoMotos";
 
-$conexion = mysqli_connect($host, $user, $pass, $db) or die ("No se pudo realizar la conexión!");
+$conexion = mysqli_connect($host, $user, $password, $dbname) or die ("No se pudo realizar la conexión!");
 echo "Conexión realizada con éxito!";
 echo "<br>";
-$consulta = "SELECT ARTICULO, CATEGORIA FROM ARTICULOS;";
+$consulta = "SELECT `user_nick`,`user_email` FROM `users` ORDER BY `user_reg_date` DESC;";
 $datos = mysqli_query($conexion, $consulta);
+
+echo mysqli_num_rows($datos) . "<br />\n";
 /* búsqueda de filas en orden inverso*/
-for ($i = mysqli_num_rows($datos) - 1; $i >= 0; $i--) {
-    if (!mysqli_data_seek($datos, $i)) {
+for ($i = mysqli_num_rows($datos) - 1; $i >= 0; $i--) { // Calcula el número de registros que devuelve la consulta
+    echo mysqli_data_seek($datos, $i) . "<br />\n";
+    if (!mysqli_data_seek($datos, $i)) {    // Si no hay  fila en esa posicion del bucle, lanza un error
         echo "No se encuentra la fila $i: " . "mysql_error()" . "\n";
         continue;
     }
-    if (!($row = mysqli_fetch_assoc($datos))) {
+    if (!($row = mysqli_fetch_assoc($datos))) { // Cuando no hay más filas disponibles salta el bucle FOR
         continue;
     }
-    echo $row['ARTICULO'] . ' ' . $row['CATEGORIA'] . "<br />\n";
+    echo $row['user_nick'] . ' ' . $row['user_email'] . "<br />\n";
 }
 mysqli_close($conexion);
 
