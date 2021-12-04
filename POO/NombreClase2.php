@@ -20,8 +20,8 @@ class NombreClase2
 
 //Trabajaremos con objetos que serán instancias de una clase
 //Creamos un objeto con el operador new.
-$objeto1 = new NombreClase();
-$objeto2 = new NombreClase('objeto2');
+$objeto1 = new NombreClase2();
+$objeto2 = new NombreClase2('objeto2');
 
 // Llamamos al método Mostrar() para cada una de las instancias.
 $objeto1->mostrar();
