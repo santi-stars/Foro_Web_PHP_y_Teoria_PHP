@@ -10,7 +10,7 @@ try {
         PDO::ATTR_PERSISTENT => true,
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ));
-    echo "conexion establecida";
+    echo "conexion establecida<br>";
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
