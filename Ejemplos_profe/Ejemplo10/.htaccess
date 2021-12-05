@@ -1,0 +1,4 @@
+DirectoryIndex index.php
+ErrorDocument 404 http://localhost/EJEMPLO10/404.php
+ErrorDocument 403 http://localhost/EJEMPLO10/404.php
+Options -Indexes

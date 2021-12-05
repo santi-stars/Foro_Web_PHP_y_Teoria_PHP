@@ -1,0 +1,47 @@
+body {
+	background-color: #666600;
+	width: 75%;
+	margin:auto;
+}
+
+#contenedor{
+	text-align: center;
+	height: 1500px;
+	background-color: #ffffcc;
+}
+
+#formulario {
+	margin: 0 auto;
+	background-color: #339933;
+	display: inline-block;
+	top: 100px;
+	position: relative;
+	padding: 50px;
+}
+
+.campo {
+	text-align: left;
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+#msg {
+	font-weight: bold;
+	border: 2px solid red;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+#link {
+	font-size: 1.25em;
+}
+
+h1 {
+	color: white;
+}
+
+header {
+	text-align: center;
+	padding:20px;
+	background-color: #336600;
+}

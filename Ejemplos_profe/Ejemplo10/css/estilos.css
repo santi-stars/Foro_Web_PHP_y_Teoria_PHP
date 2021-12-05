@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", Helvetica, sans-serif;
+}
+
+body {
+    height: 500px;
+    background-color: aqua;
+}
+
+section {
+    width: 80%;
+    margin-bottom: 10px;
+    margin: 0 auto;
+}
+
+header {
+    width: 80%;
+    margin: 50px auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    opacity: 1;
+}
+
+p {
+    text-align: justify;
+    text-indent: 1.5em;
+}
+
+hr {
+    border: solid 1px black;
+}
+
+li {
+    list-style: inside;
+}
+
+#check-menu {
+    position: absolute;
+    left: -100%;
+}
+
+#check-menu:checked ~ .ul-menu {
+    left: 0;
+    width: 100%;
+    height: 90vh;
+}
+
+nav {
+    display: block;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 50px;
+    background-color: #222;
+    text-align: center;
+    z-index: 50;
+}
+
+header h1 {
+    position: absolute;
+    float: none;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    top: 0;
+    z-index: 51;
+}
+
+.btn-menu {
+    position: absolute;
+    padding: 0 15px;
+    top: 0;
+    line-height: 50px;
+    color: #fff;
+
+}
+
+.btn-menu:hover {
+    background: #555;
+}
+
+.ul-menu {
+    position: absolute;
+    margin: auto;
+    top: 50px;
+    left: -300px;
+    text-align: center;
+    transition: left 1s ease;
+}
+
+.ul-menu > li {
+    display: block;
+    width: 300px;
+    list-style: none;
+    background-color: #222;
+
+}
+
+.ul-menu > li > a {
+    display: inline-block;
+    width: 100%;
+    padding: 0 20px;
+    line-height: 40px;
+    color: #fff;
+    border-top: 1px solid #fff;
+
+}
+
+.ul-menu > li > a:hover {
+    background-color: grey;
+
+}
+
+#recuadro {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+    background: #00ddff;
+    border-radius: 15px;
+    box-shadow: -3px 3px 15px 0px #555;
+    padding: 20px;
+}
+
+.title-form {
+    padding: 0 15px 10px;
+}
+
+.div-input {
+    position: relative;
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.div-input label {
+    position: absolute;
+    left: 10%;
+    top: -18px;
+    line-height: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.div-input input:focus + label,
+input:disabled + label,
+input:hover + label {
+    opacity: 1;
+    top: 0;
+}
+
+
+.user-form {
+    padding: 16px 0px 0px 20px;
+    display: block;
+    margin: auto;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 0 0px 5px 5px;
+    font-size: 16px;
+    background-color: transparent;
+    outline: 0px;
+}
+
+.user-form:focus,
+.user-form:hover {
+    letter-spacing: 1px;
+    border-bottom: 1px solid #fff;
+    transition: .5s;
+}
+
+.user-form::placeholder {
+    transform: translateY(0px);
+    border-style: none;
+    transition: .5s;
+}
+
+.user-form:hover::placeholder {
+    color: transparent;
+    position: relative;
+    transform: translateY(-20px);
+    border-bottom-color: transparent;
+    transition: .5s;
+}
+
+.user-form:focus::placeholder {
+    opacity: 0;
+}
+
+input[type=submit] {
+    width: 45%;
+    height: 50px;
+    display: block;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #f73859;
+    font-size: 16px;
+    transition: box-shadow .5s;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    box-shadow: 0px 3px 10px -1px #555;
+}
+
+.p-registrar-login {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    font-style: italic;
+    font-size: small;
+}
+
+.log-reg {
+    padding: 5px;
+    transition: background-color, letter-spacing .5s;
+}
+
+.log-reg:hover {
+    background-color: rgba(247, 56, 89, .5);
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.btn-datos {
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.ok-form, .warning-form, 
+.error-form {
+    padding: 5px 0 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color: rgba(132, 215, 41, .5);
+}
+
+.error-form {
+    background-color: rgba(245, 110, 110, 1);
+}
+.warning-form{
+    background-color: rgba(245, 250, 110, 1);
+    color: #000;
+}
+.pestania {
+    padding: 5px;
+    width: 49%;
+    text-align: center;
+    display: inline-block;
+    background-color: #f73859;
+    transition: .5s;
+    border-radius: 5px;
+}
+
+.pestania:hover {
+    color: #fff;
+    background-color: deeppink;
+}
+
+.pestania-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.disabled{
+    color: #fff;
+}

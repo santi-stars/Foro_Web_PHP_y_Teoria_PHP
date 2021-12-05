@@ -1,0 +1,25 @@
+body {
+	background-color: #666600;
+	width: 75%;
+	margin:auto;
+}
+
+#contenedor{
+	text-align: center;
+	height: 1500px;
+	background-color: #ffffcc;
+}
+
+#bienvenida {
+	text-align: center;
+}
+
+h1 {
+	color: white;
+}
+
+header {
+	text-align: center;
+	padding:20px;
+	background-color: #336600;
+}

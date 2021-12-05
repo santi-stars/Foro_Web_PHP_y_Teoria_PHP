@@ -1,0 +1,105 @@
+footer {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100;
+    color: #007bff;
+    font-size: 12px;
+}
+
+.custom-bg {
+    // background: linear-gradient(315deg, #a11571, #1550a1, #15a164, #c8872d);
+    // background-size: 800% 800%;
+
+    background: linear-gradient(320deg, #0d320d, #12273c, #501d4a);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 15s ease infinite;
+    -moz-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
+    z-index: -2;
+}
+
+.img-bg {
+    background-image: linear-gradient(black, black), url("https://picjumbo.com/wp-content/uploads/san-francisco-at-night-2210x1474.jpg");
+    background-size: cover;
+    background-blend-mode: saturation;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -4;
+    opacity: 0.05;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+
+.button-margin {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.error-message-wrapper {
+    height: 24px;
+    color: rgb(255, 86, 86);
+    text-align: left;
+}
+
+.welcome-text {
+    text-align: center;
+    margin: auto;
+}
+
+.hero-header {
+    font-size: 96px;
+    color: white;
+}
+
+.button-max-width {
+    max-width: 300px;
+    margin: auto;
+}
+
+.text-white {
+    color: white;
+}
