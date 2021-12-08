@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/model/MyConnection.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '\Ejemplos_profe\Ejemplo5\model\MyConnection.php';
 
 // el model es la representación de la información con la cual el sistema opera,
 // por lo tanto gestiona todos los accesos a dicha información, tanto consultas

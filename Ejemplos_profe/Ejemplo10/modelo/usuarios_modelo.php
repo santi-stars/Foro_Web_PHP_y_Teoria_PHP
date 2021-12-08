@@ -41,7 +41,7 @@
         public static function get_usuario($alias, $password){
             try{
                 $password = self::cryptconmd5($password);
-                $conexion = Conectar::Conexion();
+                $conexion = Conexion::Conexion();
                 
                 //Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
                 if(gettype($conexion) == "string"){
@@ -64,7 +64,7 @@
                 $conexion = null;
                 
             }catch(PDOException $e){
-                return Conectar::mensajes($e->getCode());
+                return Conexion::mensajes($e->getCode());
             }
         }
         
@@ -82,7 +82,7 @@
         public static function registrar($usuario, $password){
             try{
                 $password = self::cryptconmd5($password);
-                $conexion = Conectar::Conexion();
+                $conexion = Conexion::Conexion();
                 if(gettype($conexion) == "string"){
                     return $conexion;
                 }
@@ -96,7 +96,7 @@
                 $conexion = null;
                 
             }catch(PDOException $e){
-                return Conectar::mensajes($e->getCode());
+                return Conexion::mensajes($e->getCode());
             }
         }
         
@@ -115,7 +115,7 @@
             try{
                 $password = self::cryptconmd5($password);
                 $sql= 'UPDATE USUARIOS SET NOMBRE=:NOM, APELLIDO=:APE, EMAIL=:EMAIL WHERE USUARIO=:USU AND PASSWORD=:PASS';
-                $conexion = Conectar::Conexion();
+                $conexion = Conexion::Conexion();
                 if(gettype($conexion) == "string"){
                     return $conexion;
                 }
@@ -127,7 +127,7 @@
                 $conexion = null;
                 
             }catch(PDOException $e){
-                return Conectar::mensajes($e->getCode());                
+                return Conexion::mensajes($e->getCode());
             }
             
         }
@@ -156,7 +156,7 @@
                     return '<p class="error-form">Contraseña incorrecta. No se a cambiado su clave de usuario</p>';
                 }
                 $sql= 'UPDATE USUARIOS SET PASSWORD=:PASSNUEVO WHERE USUARIO=:USU AND PASSWORD=:PASS';
-                $conexion = Conectar::Conexion();
+                $conexion = Conexion::Conexion();
                 if(gettype($conexion) == "string"){
                     return $conexion;
                 }
@@ -170,7 +170,7 @@
                 $conexion = null;
                 
             }catch(PDOException $e){
-                return Conectar::mensajes($e->getCode());                
+                return Conexion::mensajes($e->getCode());
             }
             
         }
@@ -190,7 +190,7 @@
             try{
                 $password = self::cryptconmd5($password);
                 $sql= 'DELETE FROM USUARIOS WHERE USUARIO=:USU AND PASSWORD=:PASS';
-                $conexion = Conectar::Conexion()->prepare($sql);
+                $conexion = Conexion::Conexion()->prepare($sql);
                 $conexion->execute(array(":USU"=>$alias, ":PASS"=>$password));
                 
                 return $respuesta = $conexion->rowCount();
@@ -198,7 +198,7 @@
                 $respuesta->closeCursor();
                 $conexion = null;
             }catch(PDOException $e){
-                return Conectar::mensajes($e->getCode());                
+                return Conexion::mensajes($e->getCode());
             }
         }
         

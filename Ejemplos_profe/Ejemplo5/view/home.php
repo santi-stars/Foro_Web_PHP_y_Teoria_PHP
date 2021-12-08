@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/presenter/SessionPresenter.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '\Ejemplos_profe\Ejemplo5\presenter\SessionPresenter.php';
 
 // se inicializa el presenter
 $session = new SessionPresenter();
@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($session->get('user') != false) {
         $session->delete();
-        header("location: ../index.php");
+        header("location: ..\index.php");
     }
 }
 

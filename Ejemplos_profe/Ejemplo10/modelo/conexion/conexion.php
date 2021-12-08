@@ -1,6 +1,6 @@
 <?php
 
-class Conectar{
+class Conexion{
     /**
         * function
         * Conexion() 
@@ -12,8 +12,8 @@ class Conectar{
         */
     public static function Conexion(){ 
         try{
-            //Este archivo es requerido desde dos ubicaciones. Es por eso que se realizan dos comprobaciones para verificar si el archivo basededatos.php existe
-            if(file_exists("../modelo/conexion/basededatos.php") || file_exists("modelo/conexion/basededatos.php")){
+            //Este archivo es requerido desde dos ubicaciones. Es por eso que se realizan dos comprobaciones para verificar si el archivo ddbb.php existe
+            if(file_exists("../modelo/conexion/ddbb.php") || file_exists("modelo/conexion/ddbb.php")){
                 // En caso de existir lo solicita
                 require_once("basededatos.php");
                 //instancia objeto PDO
@@ -68,7 +68,7 @@ class Conectar{
     public static function mensajes($e){
         switch($e){
                 case "2002":
-                    if(file_exists("modelo/conexion/basededatos.php")){
+                    if(file_exists("modelo/conexion/ddbb.php")){
                         return "<p class='error-form'>Error al conectar!! El host es incorrecto: (" . $e.")</p>";
                     }else{
                         return "<p class='warning-form'>No cuenta con los recursos* para conectar con la base de datos. En la página de inicio podrá ver los pasos a seguir para generar los recursos necesarios.<br><small>*Si ya generó los recursos, revise que los datos sean correctos.</small></p>";

@@ -5,7 +5,7 @@ class MyConnection
 
   private $host = 'localhost';
   private $user = 'root';
-  private $pass = '';
+  private $pass = 'contraseñaForoMotos';
 
   public function __construct()
   { }

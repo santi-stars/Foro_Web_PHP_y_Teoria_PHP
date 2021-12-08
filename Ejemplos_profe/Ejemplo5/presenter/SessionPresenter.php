@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '\Ejemplos_profe\Ejemplo5\model\Model.php';
 // el presenter responde a eventos, generalmente acciones del usuario sobre la vista,
 // e invoca peticiones al model cuando se hace alguna solicitud sobre la información
 class SessionPresenter
@@ -37,7 +37,7 @@ class SessionPresenter
 
     public function deleteVar($name)
     {
-        // se elimina la variable de sesiión
+        // se elimina la variable de sesión
         unset($_SESSION[$name]);
     }
 

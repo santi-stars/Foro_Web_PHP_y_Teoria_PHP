@@ -8,7 +8,7 @@ class Crearddbb
     /**
      * function
      * basededatos($nombrehost, $usuariohost, $passwordhost)
-     * 1) Crea el archivo basededatos.php que almacena los datos para la conexion con el gestor de base de datos.
+     * 1) Crea el archivo ddbb.php que almacena los datos para la conexion con el gestor de base de datos.
      * 2) Comprueba que el archivo haya sido creado y devuelve el mensaje correspondiente.
      * 3) Prueba la conexion para chequear que los datos sean correctos y devuelve mensaje.
      * 4) Intenta crear la base de datos y devuelve mensaje.
@@ -23,7 +23,7 @@ class Crearddbb
      */
     public static function basededatos($nombrehost, $usuariohost, $passwordhost)
     {
-        $archivo = fopen("modelo/conexion/basededatos.php", "w") or die("No se puede abrir/crear el archivo!");
+        $archivo = fopen("modelo/conexion/ddbb.php", "w") or die("No se puede abrir/crear el archivo!");
         $php = "<?php 
 
     define('HOST','" . $nombrehost . "');
@@ -37,7 +37,7 @@ class Crearddbb
 
         $mensajes = array();
 
-        if (file_exists("modelo/conexion/basededatos.php")) {
+        if (file_exists("modelo/conexion/ddbb.php")) {
             $mensajes[] = "<p class='ok-form'>Archivo: El archivo ha sido creado correctamente</p>";
 
             $prueba = self::pruebaconexion();
@@ -83,11 +83,11 @@ class Crearddbb
     public static function pruebaconexion()
     {
         try {
-            $conexion = Conectar::Pruebaconexion();
+            $conexion = Conexion::Pruebaconexion();
             return $conexion;
             $conexion = null;
         } catch (PDOException $e) {
-            return Conectar::mensajes($e->getCode());
+            return Conexion::mensajes($e->getCode());
         }
     }
 
@@ -104,7 +104,7 @@ class Crearddbb
     public static function creaddbb()
     {
         try {
-            $conexion = Conectar::Pruebaconexion();
+            $conexion = Conexion::Pruebaconexion();
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -113,7 +113,7 @@ class Crearddbb
             $conexion = null;
 
         } catch (PDOException $e) {
-            return Conectar::mensajes($e->getCode());
+            return Conexion::mensajes($e->getCode());
 
         }
     }
@@ -131,7 +131,7 @@ class Crearddbb
     public static function creatabla()
     {
         try {
-            $conexion = Conectar::Conexion();
+            $conexion = Conexion::Conexion();
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -145,7 +145,7 @@ PRIMARY KEY (`USUARIO`)) ENGINE = InnoDB;");
             $conexion = null;
 
         } catch (PDOException $e) {
-            return Conectar::mensajes($e->getCode());
+            return Conexion::mensajes($e->getCode());
         }
     }
 
