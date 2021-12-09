@@ -11,7 +11,7 @@ class Conexion
      *
      * @return Object
      */
-    public static function Conexion()
+    public static function ConexionStart()
     {
         try {
             //Solicita el archivo de la base de datos
@@ -36,7 +36,7 @@ class Conexion
      * Intenta establecer la conexion cone el gestor de base de datos sin acceder a ninguna ddbb.
      * Devuelve un objeto PDO y, en caso de no ser posible la conexion, devuelve mensaje de error
      *
-     * conexion.php
+     * conexion.php                 ***BORRAR SI NO SE NECESITA!!!***
      *
      * @return Object
      */

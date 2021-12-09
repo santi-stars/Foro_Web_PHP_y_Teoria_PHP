@@ -14,7 +14,7 @@ class FPDF
 protected $page;               // current page number
 protected $n;                  // current object number
 protected $offsets;            // array of object offsets
-protected $buffer;             // buffer holding in-memory PDF
+protected $buffer;             // buffer holding in-memory AA Foro
 protected $pages;              // array containing pages
 protected $state;              // current document state
 protected $compress;           // compression flag
@@ -65,7 +65,7 @@ protected $AliasNbPages;       // alias for total number of pages
 protected $ZoomMode;           // zoom display mode
 protected $LayoutMode;         // layout display mode
 protected $metadata;           // document properties
-protected $PDFVersion;         // PDF version number
+protected $PDFVersion;         // AA Foro version number
 
 /*******************************************************************************
 *                               Public methods                                 *
@@ -165,7 +165,7 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$this->SetDisplayMode('default');
 	// Enable compression
 	$this->SetCompression(true);
-	// Set default PDF version number
+	// Set default AA Foro version number
 	$this->PDFVersion = '1.3';
 }
 
@@ -979,7 +979,7 @@ function SetXY($x, $y)
 
 function Output($dest='', $name='', $isUTF8=false)
 {
-	// Output PDF to some destination
+	// Output AA Foro to some destination
 	$this->Close();
 	if(strlen($name)==1 && strlen($dest)!=1)
 	{
@@ -1046,7 +1046,7 @@ protected function _checkoutput()
 	if(PHP_SAPI!='cli')
 	{
 		if(headers_sent($file,$line))
-			$this->Error("Some data has already been output, can't send PDF file (output started at $file:$line)");
+			$this->Error("Some data has already been output, can't send AA Foro file (output started at $file:$line)");
 	}
 	if(ob_get_length())
 	{
@@ -1057,7 +1057,7 @@ protected function _checkoutput()
 			ob_clean();
 		}
 		else
-			$this->Error("Some data has already been output, can't send PDF file");
+			$this->Error("Some data has already been output, can't send AA Foro file");
 	}
 }
 
@@ -1809,7 +1809,7 @@ protected function _putxobjectdict()
 
 protected function _putresourcedict()
 {
-	$this->_put('/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]');
+	$this->_put('/ProcSet [/AA Foro /Text /ImageB /ImageC /ImageI]');
 	$this->_put('/Font <<');
 	foreach($this->fonts as $font)
 		$this->_put('/F'.$font['i'].' '.$font['n'].' 0 R');
@@ -1862,7 +1862,7 @@ protected function _putcatalog()
 
 protected function _putheader()
 {
-	$this->_put('%PDF-'.$this->PDFVersion);
+	$this->_put('%AA Foro-'.$this->PDFVersion);
 }
 
 protected function _puttrailer()

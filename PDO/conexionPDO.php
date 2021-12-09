@@ -1,5 +1,5 @@
 <?php
-$dbname = "foroMotos";
+$dbname = "ejemplo9";
 $user = "root";
 $password = "contraseñaForoMotos";
 $dbh = "";

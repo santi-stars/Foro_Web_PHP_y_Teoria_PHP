@@ -25,35 +25,16 @@ class Model
     }
 
 
-    public function createDB()
-    {
-        // se crea la base de datos (si no existe)
-        $query = "CREATE DATABASE IF NOT EXISTS ejemplo5";
-        mysqli_query($this->connection, $query);
-    }
-
-    public function createTable()
-    {
-        // se crea la tabla en la base de datos (si no existe)
-        $query = "CREATE TABLE IF NOT EXISTS user (
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(30) NOT NULL,
-            email VARCHAR(30) NOT NULL,
-            password VARCHAR(255) NOT NULL
-            )";
-        mysqli_query($this->connection, $query);
-    }
-
 // USER_MODEL---------------------------------------------------------------------------------------------------
     public function inputExists($input, $value)
     {
-        // comprueba si un campo (username o email) existe en la base de datos con un determinado valor (value) 
+        // comprueba si un campo (username o email) existe en la base de datos con un determinado valor (value)
 
         // se inicia la conexión con la base de datos
         $this->connectCheckDb();
 
         switch ($input) {
-                // se prepara el prepared statement: en este caso dependiendo del campo, se usará uno u otro
+            // se prepara el prepared statement: en este caso dependiendo del campo, se usará uno u otro
             case 'username':
                 if (!$query = $this->connection->prepare("SELECT * FROM ejemplo5.user WHERE username = ?")) {
                     die('Error de preparación (' . htmlspecialchars($this->connection->error) . ') ');
