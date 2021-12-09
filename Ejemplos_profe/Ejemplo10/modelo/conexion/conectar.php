@@ -1,6 +1,6 @@
 <?php
 
-class Conexion{
+class Conectar{
     /**
         * function
         * Conexion() 
@@ -10,7 +10,7 @@ class Conexion{
         *
         * @return Object
         */
-    public static function Conexion(){ 
+    public static function Conectar(){
         try{
             //Este archivo es requerido desde dos ubicaciones. Es por eso que se realizan dos comprobaciones para verificar si el archivo ddbb.php existe
             if(file_exists("../modelo/conexion/ddbb.php") || file_exists("modelo/conexion/ddbb.php")){

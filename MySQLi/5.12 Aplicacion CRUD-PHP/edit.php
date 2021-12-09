@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 // guardamos los datos en la base de datos
         mysqli_query($connection, $sentencia) or die(mysqli_error());
 //una vez guardados, redirigimos a la página principal
-        header("Location: view.php");
+        header("Location: views.php");
     }
 } else {
     /* Si el formulario no ha sido enviado, obtenemos los datos del formulario desde la base de datos y visualizamos el

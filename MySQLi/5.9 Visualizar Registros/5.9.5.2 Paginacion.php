@@ -32,7 +32,7 @@ echo $total_results . " resultados<br>";
 $total_pages = ceil($total_results / $per_page);
 echo $total_pages . " paginas<br>";
 // comprueba si la varible “page” está configurada en la URL
-//  EJEMPLO:  view-paginated.php?page=1
+//  EJEMPLO:  views-paginated.php?page=1
 if (isset($_GET['page']) && is_numeric($_GET['page'])) {
     $show_page = $_GET['page'];
 // Nos aseguramos que el valor de $show_page es válido

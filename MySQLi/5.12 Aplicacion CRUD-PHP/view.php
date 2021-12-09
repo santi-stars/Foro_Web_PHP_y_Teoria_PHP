@@ -19,7 +19,7 @@ paginados. El parámetro ?page, nos indicará al tener valor
 1 que es
 primera página de resultados posibles.
 */
-echo "<p><b>Ver todos</b> | <a href='view-paginated.php?
+echo "<p><b>Ver todos</b> | <a href='views-paginated.php?
 page=1'>Ver paginados</a></p>";
 echo "<table border='1' cellpadding='10'>";
 echo "<tr> <th>ID</th> <th>Nombre</th> <th>Apellido</th>

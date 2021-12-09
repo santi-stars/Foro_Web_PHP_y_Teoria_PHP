@@ -10,7 +10,7 @@ charset=utf-8"/>
 /*
 VIEW-PAGINATED.PHP
 Visualiza todos los datos de la tabla “player”
-Es una versión modificada del fichero view.php, que
+Es una versión modificada del fichero views.php, que
 incluye paginación
 */
 //Función para ejecutar mysql_result de una manera compatible a mysql
@@ -38,7 +38,7 @@ $total_results = mysqli_num_rows($result);
 // la función ceil() redondea el resultado hacia arriba
 $total_pages = ceil($total_results / $per_page);
 // comprueba si la varible "page" está configurada en la URL
-// EJEMPLO: view-paginated.php?page=1
+// EJEMPLO: views-paginated.php?page=1
 if (isset($_GET['page']) && is_numeric($_GET['page'])) {
     $show_page = $_GET['page'];
 // Nos aseguramos que el valor de $show_page es válido
@@ -55,9 +55,9 @@ primer conjunto de resultados*/
     $end = $per_page;
 }
 // Muestra la Paginación en la parte superior de la pantalla
-echo "<p><a href='view.php'>Ver todas</a> | <b>Ver P&aacute;gina:</b> ";
+echo "<p><a href='views.php'>Ver todas</a> | <b>Ver P&aacute;gina:</b> ";
 for ($i = 1; $i <= $total_pages; $i++) {
-    echo "<a href='view-paginated.php?page=$i'>$i</a>";
+    echo "<a href='views-paginated.php?page=$i'>$i</a>";
 }
 echo "</p>";
 // Visualiza los datos en la tabla

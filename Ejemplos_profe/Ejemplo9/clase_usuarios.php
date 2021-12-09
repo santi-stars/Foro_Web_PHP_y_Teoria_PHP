@@ -21,7 +21,7 @@ class Usuario {
         $this->asunto = "Usuario creado en ejercicio feedback";
         $this->mensaje = "Su cuenta con nombre de usuario:".$this->nombre_usuario."se ha creado correctamente.";
         $this->formato = "html";
-        $this->objetoConexion=new Conexion('mysql:host=localhost;dbname=ejemplo9','root','contraseñaForoMotos');
+        $this->objetoConexion=new Conectar('mysql:host=localhost;dbname=ejemplo9','root','contraseñaForoMotos');
     }
 
     //Función que impedirá crear el usuario si no cumple con las condiciones

@@ -14,8 +14,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 // eliminamos la entrada
     $result = mysqli_query($connection, $sentencia);
 // redirigimos de vuelta a la página de vista principal
-    header("Location: view.php");
+    header("Location: views.php");
 } else {
     /* Si el ID no está configurado, o no es válido, volvemos a la página principal*/
-    header("Location: view.php");
+    header("Location: views.php");
 }

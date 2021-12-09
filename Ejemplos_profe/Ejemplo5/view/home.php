@@ -1,9 +1,9 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '\Ejemplos_profe\Ejemplo5\presenter\SessionPresenter.php';
+include_once 'C:\xampp\htdocs\Teoria\Ejemplos_profe\Ejemplo5\presenter\sesion_controler.php';
 
 // se inicializa el presenter
-$session = new SessionPresenter();
+$session = new sesioncontroler();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once("conexion/conexion.php");
+require_once("conexion/conectar.php");
 
 class Crearddbb
 {
@@ -83,11 +83,11 @@ class Crearddbb
     public static function pruebaconexion()
     {
         try {
-            $conexion = Conexion::Pruebaconexion();
+            $conexion = Conectar::Pruebaconexion();
             return $conexion;
             $conexion = null;
         } catch (PDOException $e) {
-            return Conexion::mensajes($e->getCode());
+            return Conectar::mensajes($e->getCode());
         }
     }
 
@@ -104,7 +104,7 @@ class Crearddbb
     public static function creaddbb()
     {
         try {
-            $conexion = Conexion::Pruebaconexion();
+            $conexion = Conectar::Pruebaconexion();
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -113,7 +113,7 @@ class Crearddbb
             $conexion = null;
 
         } catch (PDOException $e) {
-            return Conexion::mensajes($e->getCode());
+            return Conectar::mensajes($e->getCode());
 
         }
     }
@@ -131,7 +131,7 @@ class Crearddbb
     public static function creatabla()
     {
         try {
-            $conexion = Conexion::Conexion();
+            $conexion = Conectar::Conectar();
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -145,7 +145,7 @@ PRIMARY KEY (`USUARIO`)) ENGINE = InnoDB;");
             $conexion = null;
 
         } catch (PDOException $e) {
-            return Conexion::mensajes($e->getCode());
+            return Conectar::mensajes($e->getCode());
         }
     }
 

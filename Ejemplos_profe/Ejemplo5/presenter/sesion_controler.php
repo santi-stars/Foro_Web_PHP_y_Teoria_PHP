@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '\Ejemplos_profe\Ejemplo5\model\Model.php';
+include_once 'C:\xampp\htdocs\Teoria\Ejemplos_profe\Ejemplo5\model\Model.php' ;
 // el presenter responde a eventos, generalmente acciones del usuario sobre la vista,
-// e invoca peticiones al model cuando se hace alguna solicitud sobre la información
-class SessionPresenter
+// e invoca peticiones al models cuando se hace alguna solicitud sobre la información
+class sesioncontroler
 {
     private $model;
 
     public function __construct()
     {
-        // se inicia el model y la sesión
+        // se inicia el models y la sesión
         $this->model = new Model();
         $this->start();
     }
@@ -50,7 +50,7 @@ class SessionPresenter
 
     public function logIn($username, $md5password)
     {
-        // se reciben los datos que el usuario ha introducido en la vista y se envían al model para que
+        // se reciben los datos que el usuario ha introducido en la vista y se envían al models para que
         // compruebe si el nombre de usuario y la contraseña coinciden con alguna entrada de la base de datos.
         // Si es así, se iniciará la sesión
         if ($this->model->userPassCheck($username, $md5password)) {
@@ -63,7 +63,7 @@ class SessionPresenter
 
     public function register($username, $email, $md5password)
     {
-        // se reciben los datos que el usuario ha introducido en la vista y se envían al model para que registre al usuario
+        // se reciben los datos que el usuario ha introducido en la vista y se envían al models para que registre al usuario
         // en la base de datos.
         // Si el registro se realiza correctamente, se enviará un email al usuario
         if ($this->model->register($username, $email, $md5password)) {

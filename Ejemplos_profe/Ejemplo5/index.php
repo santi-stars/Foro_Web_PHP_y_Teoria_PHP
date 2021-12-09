@@ -1,8 +1,8 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '\Ejemplos_profe\Ejemplo5\presenter\SessionPresenter.php';
+include_once 'C:\xampp\htdocs\Teoria\Ejemplos_profe\Ejemplo5\presenter\sesion_controler.php';
 // inicializamos el presenter
-$session = new SessionPresenter();
+$session = new sesioncontroler();
 
 
 // el siguiente método redirige al usuario a Home, y en función de si la sesión está o no
