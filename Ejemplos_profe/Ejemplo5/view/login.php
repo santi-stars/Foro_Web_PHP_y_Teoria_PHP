@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_POST = array();
                 header("location: ../index.php");
             } else {
-                $message = "The login could not be completed!";
+                $message = "El login no ha podido ser completado!";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             }
         }

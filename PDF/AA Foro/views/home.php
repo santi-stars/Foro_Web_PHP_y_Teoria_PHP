@@ -1,10 +1,10 @@
 <?php
 
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\session_controller.php';
+//require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\session_controller.php';
 // inicializamos el session_controler
 // $session = new SessionController();
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\conexion\conexion.php';
-$conexion = Conexion::ConexionStart();  //CONECTA
+//require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\conexion\conexion.php';
+//$conexion = Conexion::ConexionStart();  //CONECTA
 
 
 require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\categories_controller.php';
