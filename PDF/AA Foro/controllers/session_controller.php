@@ -61,6 +61,7 @@ class SessionController
         // se reciben los datos que el usuario ha introducido en la vista y se envían al models para que
         // compruebe si el nombre de usuario y la contraseña coinciden con alguna entrada de la base de datos.
         // Si es así, se iniciará la sesión
+
         if ($usercontroler->userPassCheck($username, $md5password)) {
             $this->set('user', $username);
             $usercontroler=null;

@@ -164,44 +164,25 @@ class UserController
 
     public function userPassCheck($usernick, $md5password)
     {
-        // comprueba si la pareja de valores usuario y contraseña existe en la base de datos
+        require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\users_model.php';
+        $usermodel = new UsersModel();
 
-        // se prepara el prepared statement     ESTO AL USERS_MODEL CON TRY CATCH
-        if (!$query = $this->conexion->prepare("SELECT * FROM users WHERE user_nick = ? AND user_pass = ?")) {
-            die('Error de preparación (' . htmlspecialchars($this->connection->error) . ') ');
-        }
+        $num_of_rows = $usermodel::check_user($usernick, $md5password);
 
-        // se agregan variables al prepared statement como parámetros
-        if (!$query->bind_param('ss', $usernick, $md5password)) {
-            die('Error de asignación (' . htmlspecialchars($query->error) . ') ');
-        }
-
-        // se ejecuta el prepared statement
-        if (!$query->execute()) {
-            die('Error de ejecución (' . htmlspecialchars($query->error) . ') ');
-        }
-
-        // se obtiene un conjunto de resultados del prepared statement y se almacenan en una variable
-        $result = $query->get_result();
-
-        // se determina el número de filas del resultado y se almacenan en una variable
-        $num_of_rows = $result->num_rows;
-
-        // se libera la memoria de los resultados asociados con el statement
-        $query->free_result();
-
-        // se cierra el statement
-        $query->close();
-
-        // se cierra la conexión con la base de datos
-        $this->conexion=null;
-        // HASTA AQUÍ--------------------A USERS_NODEL----------------------------
-        // si el número de resultados es mayor que 0, significa que la pareja ya está guardada en la base
-        // de datos
         if ($num_of_rows > 0) {
+            $usermodel = null;
             return true;
         } else {
+            $usermodel = null;
             return false;
         }
+    }
+
+    public function cryptconmd5($password)
+    {
+        require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\users_model.php';
+        $usermodel = new UsersModel();
+
+        return $usermodel::cryptconmd5($password);
     }
 }

@@ -26,10 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nameErr = $session->validation("username", ['min', 'max', 'required']);
     $passErr = $session->validation("password", ['password', 'required']);
 
+    require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\users_controller.php';
+    $usercontroler = new UserController();
     // si no hay errores, se procede a registrar al usuario. Si el registro es correcto, se le redirigirá a index.
     if ($nameErr === "" && $passErr === "") {
         if (isset($_POST['username']) && isset($_POST['password'])) {
-            $md5password = md5($_POST['password']);
+            // $md5password = $usercontroler->cryptconmd5($_POST['password']);
+            $md5password = $_POST['password'];
             if ($session->logIn($_POST['username'], $md5password)) {
                 $_POST = array();
                 header("location: ../index.php");
