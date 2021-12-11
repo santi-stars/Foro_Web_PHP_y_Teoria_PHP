@@ -26,6 +26,16 @@ class CategoriesModel
         $this->cat_desc = $cat_desc;
     }
 
+    public function getCatId()
+    {
+        return $this->cat_id;
+    }
+
+    public function getCatDescription()
+    {
+        return $this->cat_desc;
+    }
+
     /**
      * function
      * get_usuario($alias, $password)
@@ -50,9 +60,10 @@ class CategoriesModel
             $sql = "SELECT * FROM `categories` ORDER BY `category_id` ASC";
             $response = $conexion->prepare($sql);
             $response->execute();
+
             $conexion = null;
 
-            return $response->fetchAll();
+            return $response->fetchAll(PDO::FETCH_OBJ);
 
         } catch (PDOException $e) {
             return Conexion::mensajes($e->getCode());

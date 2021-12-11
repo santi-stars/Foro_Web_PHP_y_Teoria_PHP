@@ -23,7 +23,7 @@ class Conexion
             ));
             //Codificación para evitar símbolos en carácteres especiales.
             $conexion->exec("SET CHARACTER SET utf8");
-            echo "conexion establecida<br>";
+            echo "<div class='conexion'>conexion establecida<br></div>";    // BORRAR
             return $conexion;
         } catch (PDOException $e) {
             return self::mensajes($e->getCode());
