@@ -3,6 +3,6 @@
 ?>
 <!-- footer -->
 </div><!-- wrapper -->
-<div id="footer">Created for <a class="item" href="https://github.com/santi-stars">santi-stars</a></div>
+<div id="footer">Creado por <a class="item" href="https://github.com/santi-stars">santi-stars</a></div>
 </body>
 </html>

@@ -1,45 +1,54 @@
 body {
-    background-color: #4E4E4E;
+    background-color: #757575;
     text-align: center;         /* make sure IE centers the page too */
 }
 
 #wrapper {
     width: 900px;
     margin: 0 auto;             /* center the page */
+
 }
 
 #content {
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #000;
     float: left;
     font-family: Arial;
     padding: 20px 30px;
     text-align: left;
     width: 100%;                /* fill up the entire div */
+    border-radius: 6px;
+    z-index: 20;
 }
 
 #menu {
+    position: relative;
+    z-index: 1000;
     float: left;
-    border: 1px solid #000;
+    /*border: 1px solid #000;
     border-bottom: none;        /* avoid a double border */
     clear: both;                /* clear:both makes sure the content div doesn't float next to this one but stays under it */
     width:100%;
     height:20px;
     padding: 0 30px;
-    background-color: #FFF;
+    /*background-color: #FFF;*/
     text-align: left;
     font-size: 85%;
+    margin-bottom: -26px;
+
 }
 
 #menu a:hover {
-    background-color: #009FC1;
+    background-color: #484848;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.44);
 }
 
 #userbar {
-    background-color: #fff;
+    /*background-color: #fff;*/
     float: right;
-    width: 300px;
+    width: auto;
 }
+
 
 #footer {
     clear: both;
@@ -79,12 +88,18 @@ h3 {margin: 0; padding: 0;}
 
 /* Menu styles */
 .item {
-    background-color: #00728B;
-    border: 1px solid #032472;
+    background-color: #545454;
+    /* border: 1px solid #032472;*/
+    border-radius: 6px;
     color: #FFF;
     font-family: Arial;
-    padding: 3px;
+    padding: 6px 12px;
     text-decoration: none;
+    z-index: 1100;
+}
+
+.login-form{
+    text-align: center;
 }
 
 .leftpart {

@@ -2,7 +2,7 @@
 
 require_once("conexion/conexion.php");
 
-class Categories_model
+class CategoriesModel
 {
     public $cat_id;
     public $cat_name;
@@ -50,24 +50,10 @@ class Categories_model
             $sql = "SELECT * FROM `categories` ORDER BY `category_id` ASC";
             $response = $conexion->prepare($sql);
             $response->execute();
-            while ($row = $response->fetch()) {
-                $resultSet[]=$row;
-            }
-
-            return $resultSet;
-                //while ($category = $response->fetch()) {
-                //$category = new Categories_model($category->category_id, $category->category_name, $category->category_desc);
-                  //  $categories = $category;
-                //}
-
-                //return $categories;
-
-                // Si el array no está vacío, crea y devuelve un objeto Categories.
-
-                //$categories = new Categories_model($response["ID"], $response["NAME"], $response["DESC"]);
-
-            $response->closeCursor();
             $conexion = null;
+
+
+            return $response->fetchAll();
 
         } catch (PDOException $e) {
             return Conexion::mensajes($e->getCode());

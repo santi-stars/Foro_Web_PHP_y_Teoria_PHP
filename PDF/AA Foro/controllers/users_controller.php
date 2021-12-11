@@ -165,15 +165,12 @@ class UserController
     public function userPassCheck($usernick, $md5password)
     {
         require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\users_model.php';
-        $usermodel = new UsersModel();
 
-        $num_of_rows = $usermodel::check_user($usernick, $md5password);
+        $num_of_rows = UsersModel::check_user($usernick, $md5password);
 
         if ($num_of_rows > 0) {
-            $usermodel = null;
             return true;
         } else {
-            $usermodel = null;
             return false;
         }
     }
@@ -181,8 +178,7 @@ class UserController
     public function cryptconmd5($password)
     {
         require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\users_model.php';
-        $usermodel = new UsersModel();
 
-        return $usermodel::cryptconmd5($password);
+        return UsersModel::cryptconmd5($password);
     }
 }

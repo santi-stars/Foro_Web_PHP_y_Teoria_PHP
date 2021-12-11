@@ -8,23 +8,18 @@
 
 
 require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\categories_controller.php';
-$categories = Categories_model::get_categories();
+$categories = CategoriesController::categories_list();
 // HEADER
 include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\views\header.php';
 ?>
     <!-- content -->
     <div id="content">
         <h2>CATEGORIAS</h2>
-        <?php
-        //while ($row = $categories) {
-        //echo "Nombre de la categoria: " . $row-> . "<br>";
-        //echo "Descripción: " . $row->cat_desc . "<br><br>";
-        //}
-        foreach ($categories as $category) {
-// salida de contenidos de cada columna en una fila de la tabla
-            echo $category['category_id'] . " " . $category['category_name'] . "----->" . $category['category_desc'] . "<br>";
-        }
-        ?>
+        <ul>
+        <?php foreach ($categories as $category) : ?>
+            <li> <?php echo $category["category_id"] . " " . $category['category_name'] . "----->" . $category['category_desc'];?></li>
+            <?php endforeach; ?>
+            </ul>
     </div><!-- content -->
 
 <?php

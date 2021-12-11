@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // si no hay errores, se procede a registrar al usuario. Si el registro es correcto, se le redirigirá a index.
     if ($nameErr === "" && $passErr === "") {
         if (isset($_POST['username']) && isset($_POST['password'])) {
-            // $md5password = $usercontroler->cryptconmd5($_POST['password']);
-            $md5password = $_POST['password'];
+            $md5password = $usercontroler->cryptconmd5($_POST['password']);
+            // $md5password = $_POST['password'];
             if ($session->logIn($_POST['username'], $md5password)) {
                 $_POST = array();
                 header("location: ../index.php");
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <h1>Foro Blasco Bikes</h1>
 <div id="wrapper">
     <div id="menu">
-        <a class="item" href="C:\xampp\htdocs\Teoria\PDF\PDF\index.php">Home</a>
+        <a class="item" href="..\index.php">Inicio</a>
         <!--<a class="item" href='login.php'>sing in</a> -
         <a class="item" href='register.php'>sing up</a>-->
     </div>
@@ -67,39 +67,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 que devuelve el nombre de archivo del script que se está ejecutando actualmente. Así envía los datos del formulario
 enviado a la propia página, en lugar de saltar a una página diferente.
 De esta manera, el usuario recibirá mensajes de error en la misma página que el formulario-->
-<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-    <br>
-    <h1 class="">Iniciar sesión</h1>
-    <!-- Nombre de usuario -->
-    <label for="inputUsername" class="">Nombre de usuario:</label><br>
-    <input id="inputUsername" name="username" class="" placeholder="Username"
-           value="<?php fillField('username') ?>" autofocus>
+<div id="content">
+    <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <br>
+        <h1 class="">Iniciar sesión</h1>
+        <!-- Nombre de usuario -->
+        <label for="inputUsername" class="">Nombre de usuario:</label><br>
+        <input id="inputUsername" name="username" class="" placeholder="Username"
+               value="<?php fillField('username') ?>" autofocus>
 
-    <!-- Mensaje de error usuario -->
-    <div class="error-message-wrapper">
-        <?php if ($nameErr != "") : ?>
-            <span><?php echo "* " . $nameErr; ?></span>
-        <?php endif; ?>
-    </div>
+        <!-- Mensaje de error usuario -->
+        <div class="error-message-wrapper">
+            <?php if ($nameErr != "") : ?>
+                <span><?php echo "* " . $nameErr; ?></span>
+            <?php endif; ?>
+        </div>
 
-    <!-- ----------- -->
-    <!-- Contraseña -->
-    <!-- ----------- -->
-    <label for="inputPassword" class="">Password</label><br>
-    <input type="password" id="inputPassword" name="password" class="" placeholder="Contraseña"
-           value="<?php fillField('password') ?>">
+        <!-- ----------- -->
+        <!-- Contraseña -->
+        <!-- ----------- -->
+        <label for="inputPassword" class="">Password</label><br>
+        <input type="password" id="inputPassword" name="password" class="" placeholder="Contraseña"
+               value="<?php fillField('password') ?>">
 
-    <!-- Mensaje de error contraseña -->
-    <div class="error-message-wrapper">
-        <?php if ($passErr != "") : ?>
-            <?php echo "* " . $passErr; ?>
-        <?php endif; ?>
-    </div>
+        <!-- Mensaje de error contraseña -->
+        <div class="error-message-wrapper">
+            <?php if ($passErr != "") : ?>
+                <?php echo "* " . $passErr; ?>
+            <?php endif; ?>
+        </div>
 
-    <button class="" type="submit">Iniciar sesión</button>
-    <div><a class="item" href='register.php'>sing up</a></div>
+        <button class="" type="submit">Iniciar sesión</button>
+        <div><a class="" href='register.php'>Regístrate</a></div>
 
-</form>
+    </form>
+</div>
 <?php
 // FOOTER
 include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\views\footer.php';

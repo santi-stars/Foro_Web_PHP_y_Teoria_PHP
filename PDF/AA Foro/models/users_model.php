@@ -5,9 +5,8 @@ require_once("conexion/conexion.php");
 class UsersModel
 {
     public $user_nick;
-    public $nombre;
-    public $apellido;
-    public $email;
+    public $user_email;
+    public $user_pass;
 
     /**
      * __construct
@@ -21,8 +20,11 @@ class UsersModel
      * @param String $apellido
      * @param String $email
      */
-    function __construct()
+    function __construct($user_nick, $user_email, $user_pass)
     {
+        $this->user_nick=$user_nick;
+        $this->user_email=$user_email;
+        $this->user_pass=$user_pass;
     }
 
 

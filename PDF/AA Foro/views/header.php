@@ -25,20 +25,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <h1>Foro Blasco Bikes</h1>
 <div id="wrapper">
     <div id="menu">
-        <a class="item" href="C:\xampp\htdocs\Teoria\PDF\PDF\index.php">Home</a>
+        <a class="item" href="..\index.php">Inicio</a>
         <!-- se obtiene del enlace el valor de sessionExists para mostrar un contenido u otro -->
         <?php $sessionExists = $_GET['sessionExists']; ?>
 
         <!-- se mostrará un mensaje de bienvenida si la sesión está iniciada -->
         <div id="userbar">
             <?php if ($sessionExists === "true") : ?>
-                <a class="item" href=''><?php echo "Bienvenido " . $session->get('user'); ?></a> -
-                <a class="item" href='home.php?sessionExists=false'>LOGOUT</a>
+                <a class="item" href=''><?php echo "Bienvenido " ?><strong> <?php echo $session->get('user'); ?></strong></a> -
+                <a class="item" href='home.php?sessionExists=false'>Cerrar sesión</a>
             <?php endif; ?>
             <?php if ($sessionExists === "false") : ?>
                 <?php $session->delete(); ?>
-                <a class="item" href='login.php'>sing in</a> -
-                <a class="item" href='register.php'>sing up</a>
+                <a class="item" href='login.php'>Iniciar sesión</a> -
+                <a class="item" href='register.php'>Regístrate</a>
             <?php endif; ?>
         </div>
     </div>

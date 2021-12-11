@@ -3,7 +3,7 @@
 
 require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\categories_model.php';
 
-class Categories_controller
+class CategoriesController
 {
 
     public function __construct()
@@ -12,12 +12,12 @@ class Categories_controller
 
 
     /**
-     * @return Categories_model|Objeto|null
+     * @return CategoriesModel|Objeto|null
      */
     public function categories_list()
     {
-        $categories = Categories_model::get_categories();
-        return $categories;
+        // $categories = CategoriesModel::get_categories();
+        return CategoriesModel::get_categories();;
     }
 }//end Clase
 
