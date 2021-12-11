@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- se permitirá el registro o inicio de sesión si la sesión no está abierta -->
     <?php if ($sessionExists === "false") : ?>
-        <div class="form-signin">
+           <div class="form-signin">
             <a href="login.php"><button class="btn btn-lg btn-primary btn-block button-margin" type="submit">Iniciar sesión</button></a>
             <a href="register.php"><button class="btn btn-lg btn-primary btn-block button-margin" type="submit">Registrarse</button></a>
         </div>

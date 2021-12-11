@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_POST = array();
                 header("location: ../index.php");
             } else {
-                $message = "El login no ha podido ser completado!";
+                $message = "El nombre de usuario o la contraseña son incorrectos!";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             }
         }
@@ -59,8 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div id="wrapper">
     <div id="menu">
         <a class="item" href="C:\xampp\htdocs\Teoria\PDF\PDF\index.php">Home</a>
-        <a class="item" href='login.php'>sing in</a> -
-        <a class="item" href='register.php'>sing up</a>
+        <!--<a class="item" href='login.php'>sing in</a> -
+        <a class="item" href='register.php'>sing up</a>-->
     </div>
 </div>
 <!-- al presenter se le enviará la información una vez validada. $_SERVER["PHP_SELF"] es una variable súper global

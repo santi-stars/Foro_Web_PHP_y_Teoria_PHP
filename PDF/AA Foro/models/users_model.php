@@ -4,7 +4,7 @@ require_once("conexion/conexion.php");
 
 class UsersModel
 {
-    public $alias;
+    public $user_nick;
     public $nombre;
     public $apellido;
     public $email;
@@ -21,14 +21,10 @@ class UsersModel
      * @param String $apellido
      * @param String $email
      */
-    function __construct($alias, $nombre, $apellido, $email)
+    function __construct()
     {
-
-        $this->alias = $alias;
-        $this->nombre = $nombre;
-        $this->apellido = $apellido;
-        $this->email = $email;
     }
+
 
     /**
      * function
@@ -81,20 +77,17 @@ class UsersModel
                 return $conexion;
             }
             // Selecciona todo menos la PASS
-            $sql = "SELECT user_id, user_nick, user_email, user_reg_date, user_level FROM users WHERE user_nick=:user_nick AND user_pass=:password";
+            $sql = "SELECT `user_id`, `user_nick`, `user_email`, `user_reg_date`, `user_level` FROM users WHERE `user_nick`=:user_nick AND `user_pass`=:password";
             $response = $conexion->prepare($sql);
             $response->bindValue(':user_nick', $user_nick);
             $response->bindValue(':password', $password);
-            $response->execute();
+            $response->execute(array(':user_nick' => $user_nick, ':password' => $password));
 
             // Si el array no está vacío, crea y devuelve el número de filas que será 1.
-            if ($response) {
-                $conexion = null;
-                return $response->rowCount();
-            } else {
-                $conexion = null;
-                return 0;
-            }
+
+            $response_count = $response->rowCount();
+            return $response_count;
+
 
         } catch (PDOException $e) {
             return Conexion::mensajes($e->getCode());

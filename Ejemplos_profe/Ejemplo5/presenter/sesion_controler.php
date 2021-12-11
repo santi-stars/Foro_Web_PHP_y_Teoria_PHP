@@ -25,7 +25,7 @@ class sesioncontroler
         $_SESSION[$name] = $value;
     }
 
-    public function get($name)
+    public function get5($name)
     {
         // se comprueba si la variable de sesión existe
         if (isset($_SESSION[$name])) {
