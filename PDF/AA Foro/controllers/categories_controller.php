@@ -16,7 +16,6 @@ class CategoriesController
      */
     public function categories_list()
     {
-        // $categories = CategoriesModel::get_categories();
         return CategoriesModel::get_categories();;
     }
 }//end Clase

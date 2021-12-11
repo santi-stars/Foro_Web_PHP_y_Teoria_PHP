@@ -46,12 +46,11 @@ class CategoriesModel
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
-            //"SELECT USUARIO, NOMBRE, APELLIDO, EMAIL FROM USUARIOS WHERE USUARIO=:usuario AND PASSWORD=:password"
+
             $sql = "SELECT * FROM `categories` ORDER BY `category_id` ASC";
             $response = $conexion->prepare($sql);
             $response->execute();
             $conexion = null;
-
 
             return $response->fetchAll();
 
