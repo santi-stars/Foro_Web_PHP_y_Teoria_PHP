@@ -65,6 +65,10 @@ body {
     width: auto;
 }
 
+.user-name{
+    color: #000000;
+}
+
 a {
     color: black;
     text-decoration: none;

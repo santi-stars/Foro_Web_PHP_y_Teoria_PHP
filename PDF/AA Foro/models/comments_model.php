@@ -132,7 +132,7 @@ class CommentsModel
         }
     }
 
-    public static function get_topics_by_cat_id($cat_id)
+    public static function get_comments_by_topic_id($topic_id)
     {
         try {
             $conexion = Conexion::conexion_start();
@@ -142,9 +142,9 @@ class CommentsModel
                 return $conexion;
             }
 
-            $sql = "SELECT * FROM `topics` WHERE `category_id`=:category_id";
+            $sql = "SELECT * FROM `comments` WHERE `topic_id`=:topic_id";
             $response = $conexion->prepare($sql);
-            $response->bindValue(':category_id', $cat_id);
+            $response->bindValue(':topic_id', $topic_id);
             $response->execute();
 
             $conexion = null;
@@ -156,7 +156,7 @@ class CommentsModel
         }
     }
 
-    public static function get_count_topics_by_cat_id($cat_id)
+    public static function get_count_comments_by_topic_id($topic_id)
     {
         try {
             $conexion = Conexion::conexion_start();
@@ -166,9 +166,9 @@ class CommentsModel
                 return $conexion;
             }
 
-            $sql = "SELECT COUNT(`category_id`) AS `numero_temas` FROM `topics` WHERE `category_id`=:category_id";
+            $sql = "SELECT COUNT(`comment_id`) AS `count_comments` FROM `comments` WHERE `topic_id`=:topic_id";
             $response = $conexion->prepare($sql);
-            $response->bindValue(':category_id', $cat_id);
+            $response->bindValue(':topic_id', $topic_id);
             $response->execute();
 
             $conexion = null;
@@ -179,5 +179,4 @@ class CommentsModel
             return Conexion::mensajes($e->getCode());
         }
     }
-}//end clase
-?>
+}

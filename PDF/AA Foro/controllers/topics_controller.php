@@ -1,7 +1,7 @@
 <?php
 
-
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\topics_model.php';
+// set_include_path( 'C:\xampp\htdocs\Teoria\PDF\AA Foro' );
+require_once '..\models\topics_model.php';
 
 class TopicsController
 {

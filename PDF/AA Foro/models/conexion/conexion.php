@@ -67,7 +67,7 @@ class Conexion
     {
         switch ($e) {
             case "2002":
-                if (file_exists("modelo/conexion/ddbb.php")) {
+                if (file_exists("models/conexion/ddbb.php")) {
                     return "<p class='error-form'>Error al conectar!! El host es incorrecto: (" . $e . ")</p>";
                 } else {
                     return "<p class='warning-form'>No cuenta con los recursos* para conectar con la base de datos. En la página de inicio podrá ver los pasos a seguir para generar los recursos necesarios.<br><small>*Si ya generó los recursos, revise que los datos sean correctos.</small></p>";

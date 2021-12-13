@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\session_controller.php';
+require_once '..\controllers\session_controller.php';
 
 // se inicializa el presenter
 $session = new SessionController();
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nameErr = $session->validation("username", ['min', 'max', 'required']);
     $passErr = $session->validation("password", ['password', 'required']);
 
-    require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\users_controller.php';
+    require_once '..\controllers\users_controller.php';
     $usercontroler = new UserController();
     // si no hay errores, se procede a registrar al usuario. Si el registro es correcto, se le redirigirá a index.
     if ($nameErr === "" && $passErr === "") {
@@ -102,5 +102,5 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
 </div>
 <?php
 // FOOTER
-include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\views\footer.php';
+include_once 'footer.php';
 ?>

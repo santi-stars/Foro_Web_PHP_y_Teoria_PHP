@@ -1,5 +1,6 @@
 <?php
-include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\conexion\conexion.php';//MODIFICAR
+set_include_path('C:\xampp\htdocs\Teoria\PDF\AA Foro');
+require_once 'models\conexion\conexion.php';//MODIFICAR
 // el SessionController responde a eventos, generalmente acciones del usuario sobre la vista,
 // e invoca peticiones al models cuando se hace alguna solicitud sobre la información
 class SessionController
@@ -8,9 +9,7 @@ class SessionController
 
     public function __construct()
     {
-        // se inicia el models y la sesión
-        //$this->model = new Model();
-        $this->conexion=new Conexion();
+        $this->conexion = new Conexion();
         $this->start();
     }
 
@@ -56,7 +55,7 @@ class SessionController
 
     public function logIn($username, $md5password)
     {
-        require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\users_controller.php';
+        require_once 'users_controller.php';
         $usercontroler = new UserController();
         // se reciben los datos que el usuario ha introducido en la vista y se envían al models para que
         // compruebe si el nombre de usuario y la contraseña coinciden con alguna entrada de la base de datos.
@@ -64,16 +63,17 @@ class SessionController
 
         if ($usercontroler->userPassCheck($username, $md5password)) {
             $this->set('user', $username);
-            $usercontroler=null;
+            $usercontroler = null;
             return true;
         } else {
-            $usercontroler=null;
+            $usercontroler = null;
             return false;
         }
     }
+
     public function validation($input, $params)
     {
-        require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\users_controller.php';
+        require_once 'users_controller.php';
         $usercontroler = new UserController();
 
         return $usercontroler->validation($input, $params);

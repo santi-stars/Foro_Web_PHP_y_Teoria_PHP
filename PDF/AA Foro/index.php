@@ -1,4 +1,5 @@
 <?php
+
 require_once 'controllers\session_controller.php';
 // inicializamos el session_controler
 $session = new SessionController();

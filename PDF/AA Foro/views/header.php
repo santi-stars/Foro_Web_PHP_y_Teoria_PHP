@@ -1,5 +1,5 @@
 <?php
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\session_controller.php';
+require_once '..\controllers\session_controller.php';
 // inicializamos el session_controler
 $session = new SessionController();
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- se mostrará un mensaje de bienvenida si la sesión está iniciada -->
         <div id="userbar">
             <?php if ($sessionExists === "true") : ?>
-                <a class="item" href=''><?php echo "Bienvenido " ?><strong> <?php echo $session->get('user'); ?></strong></a> -
+                <a class="item" href=''><?php echo "Bienvenido " ?><strong class="user-name"> <?php echo $session->get('user'); ?></strong></a> -
                 <a class="item" href='home.php?sessionExists=false'>Cerrar sesión</a>
             <?php endif; ?>
             <?php if ($sessionExists === "false") : ?>

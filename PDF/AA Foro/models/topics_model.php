@@ -142,7 +142,7 @@ class TopicsModel
                 return $conexion;
             }
 
-            $sql = "SELECT * FROM `topics` WHERE `category_id`=:category_id";
+            $sql = "SELECT * FROM `topics` WHERE `category_id`=:category_id ORDER BY `topic_date` DESC";
             $response = $conexion->prepare($sql);
             $response->bindValue(':category_id', $cat_id);
             $response->execute();
@@ -166,7 +166,7 @@ class TopicsModel
                 return $conexion;
             }
 
-            $sql = "SELECT COUNT(`category_id`) AS `numero_temas` FROM `topics` WHERE `category_id`=:category_id";
+            $sql = "SELECT COUNT(`category_id`) AS count_topics FROM `topics` WHERE `category_id`=:category_id";
             $response = $conexion->prepare($sql);
             $response->bindValue(':category_id', $cat_id);
             $response->execute();

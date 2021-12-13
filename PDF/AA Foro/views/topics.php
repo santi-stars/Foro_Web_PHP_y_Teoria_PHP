@@ -1,12 +1,14 @@
 <?php
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\categories_controller.php';
-$categories = CategoriesController::categories_list();
+require_once '..\controllers\categories_controller.php';
 $category_name = CategoriesController::cat_by_id($_GET['cat_id']);
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\topics_controller.php';
+require_once '..\controllers\topics_controller.php';
 $topics = TopicsController::get_topics_by_cat_id($_GET['cat_id']);
+require_once '..\controllers\users_controller.php';
+require_once '..\controllers\comments_controller.php';
+
 
 // HEADER
-    include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\views\header.php';
+include_once 'header.php';
 ?>
     <!-- content -->
     <div id="content">
@@ -14,7 +16,7 @@ $topics = TopicsController::get_topics_by_cat_id($_GET['cat_id']);
         <ul>
             <?php foreach ($topics as $topic) : ?>
                 <a class="cat-link"
-                   href='topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $topic->topic_id; ?>'>
+                   href='comments.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&topic_id=<?php echo $topic->topic_id; ?>'>
                     <div id="cat-item">
                         <table>
                             <tr>
@@ -27,11 +29,13 @@ $topics = TopicsController::get_topics_by_cat_id($_GET['cat_id']);
                             </tr>
                             <tr>
                                 <td class="cat-item__content__column1 second-row">
-                                    <p><?php echo $topic->topic_date . " - "."Usuario"; ?></p>
+                                    <?php $user = UserController::get_user_by_id($topic->user_id) ?>
+                                    <p><?php echo $topic->topic_date . " - " ?> <strong
+                                                class="user-name"><?php echo $user->user_nick; ?></strong></p>
                                 </td>
                                 <td class="cat-item__content__column2 second-row">
-                                    <?php $category_id = TopicsController::get_count_topics_by_cat_id($topic->category_id); ?>
-                                    <p><?php echo $topic->topic_id; ?></p>
+                                    <?php $count_comments = CommentsController::get_count_comments_by_topic_id($topic->topic_id); ?>
+                                    <p><?php echo $count_comments->count_comments; ?></p>
                                 </td>
                             </tr>
                         </table>
@@ -43,5 +47,5 @@ $topics = TopicsController::get_topics_by_cat_id($_GET['cat_id']);
 
 <?php
 // FOOTER
-include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\views\footer.php';
+include_once 'footer.php';
 ?>

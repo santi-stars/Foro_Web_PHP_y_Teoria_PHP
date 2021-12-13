@@ -1,15 +1,18 @@
 <?php
-
-include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\conexion\conexion.php';//MODIFICAR
+// set_include_path( 'C:\xampp\htdocs\Teoria\PDF\AA Foro' );
+require_once '..\models\users_model.php';
 // el SessionController responde a eventos, generalmente acciones del usuario sobre la vista,
 // e invoca peticiones al models cuando se hace alguna solicitud sobre la información
 class UserController
 {
-    private $conexion;
 
     public function __construct()
     {
-        $this->conexion = new Conexion();
+    }
+
+    public function get_user_by_id($user_id)
+    {
+        return UsersModel::get_user_by_id($user_id);
     }
 
 // USER_CONTROLER---------------------------------------------------------------------------------------------------
@@ -164,7 +167,7 @@ class UserController
 
     public function userPassCheck($usernick, $md5password)
     {
-        require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\users_model.php';
+        require_once '..\models\users_model.php';
 
         $num_of_rows = UsersModel::check_user($usernick, $md5password);
 
@@ -177,7 +180,7 @@ class UserController
 
     public function cryptconmd5($password)
     {
-        require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\users_model.php';
+        require_once '..\models\users_model.php';
 
         return UsersModel::cryptconmd5($password);
     }

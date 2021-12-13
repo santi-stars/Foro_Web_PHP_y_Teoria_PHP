@@ -8,6 +8,8 @@ class UsersModel
     public $user_nick;
     public $user_email;
     public $user_pass;
+    public $user_reg_date;
+    public $user_level;
 
     /**
      * __construct
@@ -21,14 +23,111 @@ class UsersModel
      * @param null $user_email
      * @param null $user_pass
      */
-    function __construct($user_id = null, $user_nick = null, $user_email = null, $user_pass = null)
+    function __construct($user_id = null, $user_nick = null, $user_email = null, $user_pass = null, $user_reg_date = null, $user_level = null)
     {
         $this->user_id = $user_id;
         $this->user_nick = $user_nick;
         $this->user_email = $user_email;
         $this->user_pass = $user_pass;
+        $this->user_reg_date = $user_reg_date;
+        $this->user_level = $user_level;
     }
 
+    /**
+     * @return null
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * @param null $user_id
+     */
+    public function setUserId($user_id)
+    {
+        $this->user_id = $user_id;
+    }
+
+    /**
+     * @return null
+     */
+    public function getUserNick()
+    {
+        return $this->user_nick;
+    }
+
+    /**
+     * @param null $user_nick
+     */
+    public function setUserNick($user_nick)
+    {
+        $this->user_nick = $user_nick;
+    }
+
+    /**
+     * @return null
+     */
+    public function getUserEmail()
+    {
+        return $this->user_email;
+    }
+
+    /**
+     * @param null $user_email
+     */
+    public function setUserEmail($user_email)
+    {
+        $this->user_email = $user_email;
+    }
+
+    /**
+     * @return null
+     */
+    public function getUserPass()
+    {
+        return $this->user_pass;
+    }
+
+    /**
+     * @param null $user_pass
+     */
+    public function setUserPass($user_pass)
+    {
+        $this->user_pass = $user_pass;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getUserRegDate()
+    {
+        return $this->user_reg_date;
+    }
+
+    /**
+     * @param mixed|null $user_reg_date
+     */
+    public function setUserRegDate($user_reg_date)
+    {
+        $this->user_reg_date = $user_reg_date;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getUserLevel()
+    {
+        return $this->user_level;
+    }
+
+    /**
+     * @param mixed|null $user_level
+     */
+    public function setUserLevel($user_level)
+    {
+        $this->user_level = $user_level;
+    }
 
     /**
      * function
@@ -71,9 +170,36 @@ class UsersModel
         }
     }
 
+    /**
+     * @param $user_id
+     * @return mixed|Object|PDO|String
+     */
+    public static function get_user_by_id($user_id)
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT `user_id`, `user_nick`, `user_email`, `user_reg_date`, `user_level` FROM users WHERE `user_id`=:user_id";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':user_id', $user_id);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetch(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
     // SE USA****************************************************
     public static function check_user($user_nick, $password)
-    {  // MODIFICAR PARA QUE DEVUELVA EL NUMERO DE FILAS DE LA SENTENCIA SQL
+    {
         try {
             $conexion = Conexion::conexion_start();
 
@@ -172,6 +298,7 @@ class UsersModel
             return Conexion::mensajes($e->getCode());
         }
     }
+
     /**
      * function
      * registrar($usuario, $password)

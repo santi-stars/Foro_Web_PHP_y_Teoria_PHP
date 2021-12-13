@@ -1,7 +1,7 @@
 <?php
 
 
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\models\categories_model.php';
+require_once '..\models\categories_model.php';
 
 class CategoriesController
 {
