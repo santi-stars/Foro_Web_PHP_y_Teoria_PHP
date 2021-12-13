@@ -50,7 +50,7 @@ class CategoriesModel
     public static function get_categories()
     {
         try {
-            $conexion = Conexion::ConexionStart();
+            $conexion = Conexion::conexion_start();
 
 //Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
@@ -64,6 +64,31 @@ class CategoriesModel
             $conexion = null;
 
             return $response->fetchAll(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
+
+    public static function get_category_by_id($cat_id)
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM `categories` WHERE `category_id`=:category_id";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':category_id', $cat_id);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetch(PDO::FETCH_OBJ);
 
         } catch (PDOException $e) {
             return Conexion::mensajes($e->getCode());

@@ -11,7 +11,7 @@ class Conexion
      *
      * @return Object
      */
-    public static function ConexionStart()
+    public static function conexion_start()
     {
         try {
             //Solicita el archivo de la base de datos
@@ -40,7 +40,7 @@ class Conexion
      *
      * @return Object
      */
-    public static function Pruebaconexion()
+    public static function prueba_conexion()
     {
         try {
             require_once("ddbb.php");

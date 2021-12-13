@@ -1,35 +1,37 @@
 <?php
-require_once '..\controllers\categories_controller.php';
+require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\categories_controller.php';
 $categories = CategoriesController::categories_list();
+$category_name = CategoriesController::cat_by_id($_GET['cat_id']);
 require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\topics_controller.php';
+$topics = TopicsController::get_topics_by_cat_id($_GET['cat_id']);
 
 // HEADER
-include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\views\header.php';
+    include_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\views\header.php';
 ?>
     <!-- content -->
     <div id="content">
-        <h1>CATEGORIAS</h1>
+        <h1><?php echo $category_name->category_name ?></h1>
         <ul>
-            <?php foreach ($categories as $category) : ?>
+            <?php foreach ($topics as $topic) : ?>
                 <a class="cat-link"
-                   href='topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $category->category_id; ?>'>
+                   href='topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $topic->topic_id; ?>'>
                     <div id="cat-item">
                         <table>
                             <tr>
                                 <td class="cat-item__content__column1 first-row">
-                                    <h3><?php echo $category->category_name ?></h3>
+                                    <h3><?php echo $topic->topic_name ?></h3>
                                 </td>
                                 <td class="cat-item__content__column2 first-row">
-                                    <p>Temas</p>
+                                    <p>Mensajes</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="cat-item__content__column1 second-row">
-                                    <p><?php echo $category->category_desc; ?></p>
+                                    <p><?php echo $topic->topic_date . " - "."Usuario"; ?></p>
                                 </td>
                                 <td class="cat-item__content__column2 second-row">
-                                    <?php $numero_temas = TopicsController::get_count_topics_by_cat_id($category->category_id); ?>
-                                    <p><?php echo $numero_temas->numero_temas; ?></p>
+                                    <?php $category_id = TopicsController::get_count_topics_by_cat_id($topic->category_id); ?>
+                                    <p><?php echo $topic->topic_id; ?></p>
                                 </td>
                             </tr>
                         </table>

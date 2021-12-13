@@ -48,19 +48,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="..\png\icono_blascobikes.ico">
     <link rel="stylesheet" href="../css/style.css">
     <title>Foro Blasco Bikes</title>
 </head>
 <body>
-<h1>Foro Blasco Bikes</h1>
+<img id="fondo-header" src="..\PNG\header_foro_blasco_bikes.png">
 <div id="wrapper">
     <div id="menu">
         <a class="item" href="..\index.php">Inicio</a>
-        <!--<a class="item" href='login.php'>sing in</a> -
-        <a class="item" href='register.php'>sing up</a>-->
     </div>
 </div>
 <!-- al presenter se le enviará la información una vez validada. $_SERVER["PHP_SELF"] es una variable súper global

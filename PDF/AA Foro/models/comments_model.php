@@ -1,1 +1,183 @@
 <?php
+
+require_once("conexion/conexion.php");
+
+class CommentsModel
+{
+    public $comment_id;
+    public $comment_text;
+    public $comment_date;
+    public $user_id;
+    public $topic_id;
+
+    /**
+     * @param $comment_id
+     * @param $comment_text
+     * @param $comment_date
+     * @param $user_id
+     * @param $topic_id
+     */
+    function __construct($comment_id = null, $comment_text = null, $comment_date = null, $user_id = null, $topic_id = null)
+    {
+        $this->comment_id = $comment_id;
+        $this->comment_text = $comment_text;
+        $this->comment_date = $comment_date;
+        $this->user_id = $user_id;
+        $this->topic_id = $topic_id;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getCommentId()
+    {
+        return $this->comment_id;
+    }
+
+    /**
+     * @param mixed|null $comment_id
+     */
+    public function setCommentId($comment_id)
+    {
+        $this->comment_id = $comment_id;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getCommentText()
+    {
+        return $this->comment_text;
+    }
+
+    /**
+     * @param mixed|null $comment_text
+     */
+    public function setCommentText($comment_text)
+    {
+        $this->comment_text = $comment_text;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getCommentDate()
+    {
+        return $this->comment_date;
+    }
+
+    /**
+     * @param mixed|null $comment_date
+     */
+    public function setCommentDate($comment_date)
+    {
+        $this->comment_date = $comment_date;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * @param mixed|null $user_id
+     */
+    public function setUserId($user_id)
+    {
+        $this->user_id = $user_id;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getTopicId()
+    {
+        return $this->topic_id;
+    }
+
+    /**
+     * @param mixed|null $topic_id
+     */
+    public function setTopicId($topic_id)
+    {
+        $this->topic_id = $topic_id;
+    }
+
+    /**
+     * @return array|false|Object|PDO|String
+     */
+    public static function get_comments()
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM `comments` ORDER BY `comment_date` DESC";
+            $response = $conexion->prepare($sql);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetchAll(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
+    public static function get_topics_by_cat_id($cat_id)
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM `topics` WHERE `category_id`=:category_id";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':category_id', $cat_id);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetchAll(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
+    public static function get_count_topics_by_cat_id($cat_id)
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT COUNT(`category_id`) AS `numero_temas` FROM `topics` WHERE `category_id`=:category_id";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':category_id', $cat_id);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetch(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+}//end clase
+?>

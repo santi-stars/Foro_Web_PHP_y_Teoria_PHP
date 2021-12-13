@@ -40,11 +40,11 @@ class UsersModel
      * @param String $user_nick
      * @param String $password
      * @return Usuarios_modelo
-     */
+     */ // SE USA****************************************************
     public static function get_user($user_nick, $password)
     {
         try {
-            $conexion = Conexion::ConexionStart();
+            $conexion = Conexion::conexion_start();
 
             //Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
@@ -71,10 +71,11 @@ class UsersModel
         }
     }
 
+    // SE USA****************************************************
     public static function check_user($user_nick, $password)
     {  // MODIFICAR PARA QUE DEVUELVA EL NUMERO DE FILAS DE LA SENTENCIA SQL
         try {
-            $conexion = Conexion::ConexionStart();
+            $conexion = Conexion::conexion_start();
 
             //Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
@@ -99,6 +100,79 @@ class UsersModel
     }
 
     /**
+     * @return array|false|Object|PDO|String
+     */
+    public static function get_users()
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM `users` ORDER BY `user_id` ASC";
+            $response = $conexion->prepare($sql);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetchAll(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
+    public static function get_users_by_topic_id($topic_id)
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM `topics` WHERE `category_id`=:topic_id";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':topic_id', $topic_id);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetchAll(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
+    public static function get_count_topics_by_cat_id($cat_id)
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT COUNT(`category_id`) AS `numero_temas` FROM `topics` WHERE `category_id`=:category_id";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':category_id', $cat_id);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetch(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+    /**
      * function
      * registrar($usuario, $password)
      * Devuelve Boolean o String en caso de error
@@ -113,7 +187,7 @@ class UsersModel
     {
         try {
             $password = self::cryptconmd5($password);
-            $conexion = Conexion::ConexionStart();
+            $conexion = Conexion::conexion_start();
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -147,7 +221,7 @@ class UsersModel
         try {
             $password = self::cryptconmd5($password);
             $sql = 'UPDATE USUARIOS SET NOMBRE=:NOM, APELLIDO=:APE, EMAIL=:EMAIL WHERE USUARIO=:USU AND PASSWORD=:PASS';
-            $conexion = Conexion::ConexionStart();
+            $conexion = Conexion::conexion_start();
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -189,7 +263,7 @@ class UsersModel
                 return '<p class="error-form">Contraseña incorrecta. No se a cambiado su clave de usuario</p>';
             }
             $sql = 'UPDATE USUARIOS SET PASSWORD=:PASSNUEVO WHERE USUARIO=:USU AND PASSWORD=:PASS';
-            $conexion = Conexion::ConexionStart();
+            $conexion = Conexion::conexion_start();
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -224,7 +298,7 @@ class UsersModel
         try {
             $password = self::cryptconmd5($password);
             $sql = 'DELETE FROM USUARIOS WHERE USUARIO=:USU AND PASSWORD=:PASS';
-            $conexion = Conexion::ConexionStart()->prepare($sql);
+            $conexion = Conexion::conexion_start()->prepare($sql);
             $conexion->execute(array(":USU" => $alias, ":PASS" => $password));
 
             return $respuesta = $conexion->rowCount();
@@ -246,6 +320,7 @@ class UsersModel
      * @param String $password
      * @return String
      */
+    // SE USA****************************************************
     public static function cryptconmd5($password)
     {
         //Crea un salt
@@ -253,8 +328,4 @@ class UsersModel
         $password = md5($salt . $password . $salt);
         return $password;
     }
-
-}//end clase
-
-
-?>
+}

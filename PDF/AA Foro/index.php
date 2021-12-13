@@ -1,5 +1,5 @@
 <?php
-require_once 'C:\xampp\htdocs\Teoria\PDF\AA Foro\controllers\session_controller.php';
+require_once 'controllers\session_controller.php';
 // inicializamos el session_controler
 $session = new SessionController();
 

@@ -71,7 +71,9 @@ a {
 }
 
 a:hover {
+    /*
     color: black;
+     */
     font-family: arial;
     text-decoration: none;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.44);
