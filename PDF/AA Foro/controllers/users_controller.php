@@ -1,13 +1,16 @@
 <?php
 // set_include_path( 'C:\xampp\htdocs\Teoria\PDF\AA Foro' );
 require_once '..\models\users_model.php';
+require_once '..\models\conexion\conexion.php';
 // el SessionController responde a eventos, generalmente acciones del usuario sobre la vista,
 // e invoca peticiones al models cuando se hace alguna solicitud sobre la información
 class UserController
 {
+    private $conexion;
 
     public function __construct()
     {
+        $this->conexion = new Conexion();
     }
 
     public function get_user_by_id($user_id)
@@ -16,13 +19,13 @@ class UserController
     }
 
 // USER_CONTROLER---------------------------------------------------------------------------------------------------
-    public function register($username, $email, $md5password)
+    public function register($usernick, $email, $md5password)
     {
         // se reciben los datos que el usuario ha introducido en la vista y se envían al models para que registre al usuario
         // en la base de datos.
         // Si el registro se realiza correctamente, se enviará un email al usuario
-        if ($this->conexion->register($username, $email, $md5password)) {
-            $this->sendEmail($username, $email);
+        if (UsersModel::register($usernick, $email, $md5password)) {
+            $this->sendEmail($usernick, $email);
             return true;
         } else {
             return false;
@@ -103,7 +106,7 @@ class UserController
                     break;
 
                 case 'duplicated':
-                    if ($this->conexion->inputExists(str_replace("new-", "", $input), $_POST[$input])) {
+                    if ($this->inputExists(str_replace("new-", "", $input), $_POST[$input])) {
                         $error = "El " . $input . " ya existe";
                     }
                     break;
@@ -172,6 +175,19 @@ class UserController
         $num_of_rows = UsersModel::check_user($usernick, $md5password);
 
         if ($num_of_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function inputExists($input, $value)
+    {
+        require_once '..\models\users_model.php';
+
+        $num_of_rows = UsersModel::inputExists($input, $value);
+
+        if ($num_of_rows->count > 0) {
             return true;
         } else {
             return false;

@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($nameErr === "" && $emailErr === "" && $passErr === "") {
         if (isset($_POST['new-username']) && isset($_POST['new-email']) && isset($_POST['new-password'])) {
             $md5password = md5($_POST['new-password']);
-            if ($session->register($_POST['new-username'], $_POST['new-email'], $md5password)) {
+            if ($session->register5($_POST['new-username'], $_POST['new-email'], $md5password)) {
                 $_POST = array();
                 header("location: login.php");
             } else {

@@ -212,12 +212,11 @@ class UsersModel
             $response = $conexion->prepare($sql);
             $response->bindValue(':user_nick', $user_nick);
             $response->bindValue(':password', $password);
-            $response->execute(array(':user_nick' => $user_nick, ':password' => $password));
-
+            $response->execute();
+// array(':user_nick' => $user_nick, ':password' => $password) BORRAR
             // Si el array no está vacío, crea y devuelve el número de filas que será 1.
 
-            $response_count = $response->rowCount();
-            return $response_count;
+            return $response->rowCount();
 
 
         } catch (PDOException $e) {
@@ -299,33 +298,66 @@ class UsersModel
         }
     }
 
-    /**
-     * function
-     * registrar($usuario, $password)
-     * Devuelve Boolean o String en caso de error
-     *
-     * usuarios_modelo.php
-     *
-     * @param Object $usuario
-     * @param String $password
-     * @return Boolean
-     */
-    public static function registrar($usuario, $password)
+    public function inputExists($input, $value)
     {
+        // comprueba si un campo (username o email) existe en la base de datos con un determinado valor (value)
         try {
-            $password = self::cryptconmd5($password);
             $conexion = Conexion::conexion_start();
+
+            //Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
 
-            $sql = "INSERT INTO USUARIOS (USUARIO, NOMBRE, APELLIDO, EMAIL, PASSWORD) VALUES (:USU, :NOM, :APE, :EMAIL, :PASS)";
-            $respuesta = $conexion->prepare($sql);
-            $respuesta = $respuesta->execute(array(":USU" => $usuario->alias, ":NOM" => $usuario->nombre, ":APE" => $usuario->apellido, ":EMAIL" => $usuario->email, ":PASS" => $password));
-            return $respuesta;
+            switch ($input) {
+                case 'username':
+                    $sql = "SELECT COUNT(`user_id`) AS `count` FROM users WHERE `user_nick`=:user_nick";
+                    $response = $conexion->prepare($sql);
+                    $response->bindValue(':user_nick', $value);
+                    $response->execute();
 
-            $respuesta->closeCursor();
+                    break;
+                case 'email':
+                    $sql = "SELECT COUNT(`user_id`) AS `count` FROM users WHERE `user_email`=:user_email";
+                    $response = $conexion->prepare($sql);
+                    $response->bindValue(':user_email', $value);
+                    $response->execute();
+
+                    break;
+                default:
+                    $conexion = null;
+                    break;
+            }
+            return $response->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
+    /**
+     * @param $usuario
+     * @param $md5password
+     * @return bool|Object|PDO|String
+     */
+    public static function register($usuario, $email, $md5password)
+    {
+        try {
+
+            $conexion = Conexion::conexion_start();
+
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "INSERT INTO `users` (`user_nick`, `user_email`, `user_pass`) VALUES (:user_nick, :user_email, :user_pass)";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':user_nick', $usuario);
+            $response->bindValue(':user_email', $email);
+            $response->bindValue(':user_pass', $md5password);
+            $response->execute();
             $conexion = null;
+
+            return true;
 
         } catch (PDOException $e) {
             return Conexion::mensajes($e->getCode());

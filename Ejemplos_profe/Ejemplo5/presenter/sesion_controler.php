@@ -61,7 +61,7 @@ class sesioncontroler
         }
     }
 
-    public function register($username, $email, $md5password)
+    public function register5($username, $email, $md5password)
     {
         // se reciben los datos que el usuario ha introducido en la vista y se envían al models para que registre al usuario
         // en la base de datos.

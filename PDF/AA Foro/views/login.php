@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($nameErr === "" && $passErr === "") {
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $md5password = $usercontroler->cryptconmd5($_POST['password']);
-            // $md5password = $_POST['password'];
+
             if ($session->logIn($_POST['username'], $md5password)) {
                 $_POST = array();
                 header("location: ../index.php");
