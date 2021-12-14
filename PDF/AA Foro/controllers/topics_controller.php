@@ -21,6 +21,15 @@ class TopicsController
         return TopicsModel::get_topics();
     }
 
+    /**
+     * @param $topic_id
+     * @return mixed|Object|PDO|String
+     */
+    public function get_topic_by_id($topic_id)
+    {
+        return TopicsModel::get_topic_by_id($topic_id);
+    }
+
     public function get_topics_by_cat_id($cat_id)
     {
         return TopicsModel::get_topics_by_cat_id($cat_id);

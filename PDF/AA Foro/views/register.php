@@ -1,5 +1,6 @@
 <?php
 
+require_once '..\controllers\session_controller.php';
 require_once '..\controllers\users_controller.php';
 
 // se inicializa el presenter
@@ -32,15 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($nameErr === "" && $emailErr === "" && $passErr === "") {
         if (isset($_POST['new-username']) && isset($_POST['new-email']) && isset($_POST['new-password'])) {
             $md5password = $user->cryptconmd5($_POST['new-password']);
-
+            $session = new SessionController();
             if ($user->register($_POST['new-username'], $_POST['new-email'], $md5password)) {
+                $session->logIn($_POST['new-username'], $md5password);
                 $_POST = array();
-                $message = "El registro de usuario se ha completado con exito! \n Enhorabuena!!!";
-                echo "<script type='text/javascript'>alert('$message');</script>";
-                header("location: ../index.php");
+                header("location: notice.php?notice=registered&sessionExists=true");
             } else {
-                $message = "El registro de usuario ha fallado con exito! Enhorabuena!!!";
-                echo "<script type='text/javascript'>alert('$message');</script>";
+                header("location: notice.php?notice=registerFail&sessionExists=true");
             }
         }
     }
@@ -52,19 +51,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="..\png\icono_blascobikes.ico">
         <link rel="stylesheet" href="../css/style.css">
         <title>Foro Blasco Bikes</title>
     </head>
 <body>
-    <img id="fondo-header" src="..\PNG\header_foro_blasco_bikes.png">
-    <div id="wrapper">
-        <div id="menu">
-            <a class="item" href="..\index.php">Inicio</a>
-        </div>
+<img id="fondo-header" src="..\PNG\header_foro_blasco_bikes.png">
+<div id="wrapper">
+    <div id="menu">
+        <a class="item" href="..\index.php">Inicio</a>
     </div>
+</div>
 <!-- al presenter se le enviará la información una vez validada. $_SERVER["PHP_SELF"] es una variable súper global
 que devuelve el nombre de archivo del script que se está ejecutando actualmente. Así envía los datos del formulario
 enviado a la propia página, en lugar de saltar a una página diferente.

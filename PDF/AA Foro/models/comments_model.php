@@ -142,7 +142,7 @@ class CommentsModel
                 return $conexion;
             }
 
-            $sql = "SELECT * FROM `comments` WHERE `topic_id`=:topic_id";
+            $sql = "SELECT * FROM `comments` WHERE `topic_id`=:topic_id ORDER BY `comment_date` ASC";
             $response = $conexion->prepare($sql);
             $response->bindValue(':topic_id', $topic_id);
             $response->execute();

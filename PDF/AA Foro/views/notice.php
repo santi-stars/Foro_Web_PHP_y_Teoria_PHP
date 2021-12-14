@@ -1,8 +1,18 @@
 <?php
 require_once '..\controllers\session_controller.php';
+$session = new SessionController();
+
+switch ($_GET['notice']) {
+    case 'registered':
+        $message = "El registro de usuario se ha registrado con exito! Enhorabuena!!!";
+        break;
+    case 'registerFail':
+        $message = "El registro de usuario ha fallado con exito! Enhorabuena!!!";
+        break;
+}
+
 // inicializamos el session_controler
 
-$session = new SessionController();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--<h1>Foro Blasco Bikes</h1>-->
 <div id="wrapper">
     <div id="menu">
-        <a class="item" href="..\index.php">Inicio</a>
+        <a class="item" href="..\index.php">Volver</a>
         <!-- se obtiene del enlace el valor de sessionExists para mostrar un contenido u otro -->
         <?php $sessionExists = $_GET['sessionExists']; ?>
 
@@ -46,3 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endif; ?>
         </div>
     </div>
+
+<div id="content">
+    <h1>AVISO</h1>
+    <?php echo $message ?>
+</div><!-- content -->
+
+<?php
+// FOOTER
+include_once 'footer.php';
+?>
+
+

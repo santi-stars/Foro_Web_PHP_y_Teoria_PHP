@@ -14,6 +14,5 @@ if ($session->get('user') != false) {
 } else {
     //si la sesión no está abierta, permitirá el registro o inicio de sesión con una
     // cuenta existente
-    echo "sesion no existe";
     header("location: views/home.php?sessionExists=false");
 }

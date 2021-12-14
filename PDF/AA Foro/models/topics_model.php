@@ -156,6 +156,30 @@ class TopicsModel
         }
     }
 
+    public static function get_topic_by_id($topic_id)
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM `topics` WHERE `topic_id`=:topic_id";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':topic_id', $topic_id);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetch(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
     public static function get_count_topics_by_cat_id($cat_id)
     {
         try {

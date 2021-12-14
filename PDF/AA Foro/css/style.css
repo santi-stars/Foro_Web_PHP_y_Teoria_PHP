@@ -122,6 +122,10 @@ a:visited {
     text-align: center;
 }
 
+.comment{
+    width: 100%;
+}
+
 #footer {
     clear: both;
 }
