@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailErr = $user->validation("new-email", ['email', 'duplicated', 'required']);
     $passErr = $user->validation("new-password", ['password', 'required']);
 
-    // si no hay errores, se procede a registrar al usuario. Si el registro es correcto, se le redirigirá a Login.
+    // si no hay errores, se procede a registrar al usuario. Si el registro es correcto, se loguea automáticamente
+    // y manda a una pantalla de aviso
     if ($nameErr === "" && $emailErr === "" && $passErr === "") {
         if (isset($_POST['new-username']) && isset($_POST['new-email']) && isset($_POST['new-password'])) {
             $md5password = $user->cryptconmd5($_POST['new-password']);
@@ -69,13 +70,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 que devuelve el nombre de archivo del script que se está ejecutando actualmente. Así envía los datos del formulario
 enviado a la propia página, en lugar de saltar a una página diferente.
 De esta manera, el usuario recibirá mensajes de error en la misma página que el formulario-->
+<div id="content">
 <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 
-    <h1 class="h3 mb-3 font-weight-normal text-white">Registro</h1>
+    <h1 class="register">Registro</h1>
     <!-- ----------- -->
     <!-- Nombre de usuario -->
     <!-- ----------- -->
-    <label for="inputUsername" class="sr-only">Nombre de usuario:</label>
+    <label for="inputUsername" class="sr-only">Nombre de usuario:</label><br>
     <input id="inputUsername" name="new-username" class="form-control" placeholder="Username"
            value="<?php fillField('new-username') ?>" autofocus>
 
@@ -89,7 +91,7 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
     <!-- ----------- -->
     <!-- Email -->
     <!-- ----------- -->
-    <label for="inputEmail" class="sr-only">Email</label>
+    <label for="inputEmail" class="sr-only">Email</label><br>
     <input id="inputEmail" name="new-email" class="form-control" placeholder="Email"
            value="<?php fillField('new-email') ?>">
 
@@ -103,7 +105,7 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
     <!-- ----------- -->
     <!-- Contraseña -->
     <!-- ----------- -->
-    <label for="inputPassword" class="sr-only">Password</label>
+    <label for="inputPassword" class="sr-only">Password</label><br>
     <input type="password" id="inputPassword" name="new-password" class="form-control" placeholder="Contraseña"
            value="<?php fillField('new-password') ?>">
 
@@ -114,9 +116,10 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
         <?php endif; ?>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
+    <button class="btn-log-reg" type="submit">Registrarse</button>
+    <div><a class="link" href='login.php'>Inicia sesión</a></div>
 </form>
-
+    </div>
 <?php
 // FOOTER
 include_once 'footer.php';

@@ -35,6 +35,11 @@ class TopicsController
         return TopicsModel::get_topics_by_cat_id($cat_id);
     }
 
+    public function get_last_topic_id()
+    {
+        return TopicsModel::get_last_topic_id();
+    }
+
     /**
      * @param $cat_id
      * @return array|false|Object|PDO|String
@@ -42,5 +47,10 @@ class TopicsController
     public function get_count_topics_by_cat_id($cat_id)
     {
         return TopicsModel::get_count_topics_by_cat_id($cat_id);
+    }
+
+    public function register_topic($topic_name, $user_id, $category_id)
+    {
+        return TopicsModel::register_topic($topic_name, $user_id, $category_id);
     }
 }

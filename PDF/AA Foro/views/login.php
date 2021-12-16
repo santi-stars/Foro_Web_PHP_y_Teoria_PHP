@@ -71,7 +71,7 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
         <h1 class="">Iniciar sesión</h1>
         <!-- Nombre de usuario -->
         <label for="inputUsername" class="">Nombre de usuario:</label><br>
-        <input id="inputUsername" name="username" class="" placeholder="Username"
+        <input id="inputUsername" name="username" class="form-control" placeholder="Username"
                value="<?php fillField('username') ?>" autofocus>
 
         <!-- Mensaje de error usuario -->
@@ -85,7 +85,7 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
         <!-- Contraseña -->
         <!-- ----------- -->
         <label for="inputPassword" class="">Password</label><br>
-        <input type="password" id="inputPassword" name="password" class="" placeholder="Contraseña"
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Contraseña"
                value="<?php fillField('password') ?>">
 
         <!-- Mensaje de error contraseña -->
@@ -95,8 +95,8 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
             <?php endif; ?>
         </div>
 
-        <button class="" type="submit">Iniciar sesión</button>
-        <div><a class="" href='register.php'>Regístrate</a></div>
+        <button class="btn-log-reg" type="submit">Iniciar sesión</button>
+        <div><a class="link" href='register.php'>Regístrate</a></div>
 
     </form>
 </div>

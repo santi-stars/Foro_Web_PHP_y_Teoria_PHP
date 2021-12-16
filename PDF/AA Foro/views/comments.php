@@ -34,15 +34,21 @@ include_once 'header.php';
                                 <p><?php echo $comment->comment_text; ?></p>
                             </td>
                             <td class="cat-item__content__column2 second-row">
-                                <a class="" href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'> <img id="" src="..\png\delete.png"> </a>
-                                <a class="" href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'> <img id="" src="..\png\reply.png"> </a>
+                                <a class="img-button__comments"
+                                   href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'>
+                                    <img id="" src="..\png\delete.png">
+                                </a>
+                                <a class="img-button__comments"
+                                   href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'>
+                                    <img id="" src="..\png\write.png">
+                                </a>
                             </td>
                         </tr>
                     </table>
                 </div>
             <?php endforeach; ?>
         </ul>
-        <button>Escribe tu mensaje <img id="" src="..\png\reply.png"> </button>
+        <button>Escribe tu mensaje <img id="" src="..\png\reply.png"></button>
     </div><!-- content -->
 
 <?php

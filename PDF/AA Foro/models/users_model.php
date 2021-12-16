@@ -274,7 +274,7 @@ class UsersModel
         }
     }
 
-    public static function get_count_topics_by_cat_id($cat_id)
+    public static function get_user_id_by_user_nick($user_nick)
     {
         try {
             $conexion = Conexion::conexion_start();
@@ -284,9 +284,9 @@ class UsersModel
                 return $conexion;
             }
 
-            $sql = "SELECT COUNT(`category_id`) AS `numero_temas` FROM `topics` WHERE `category_id`=:category_id";
+            $sql = "SELECT `user_id` FROM `users` WHERE `user_nick`=:user_nick";
             $response = $conexion->prepare($sql);
-            $response->bindValue(':category_id', $cat_id);
+            $response->bindValue(':user_nick', $user_nick);
             $response->execute();
 
             $conexion = null;

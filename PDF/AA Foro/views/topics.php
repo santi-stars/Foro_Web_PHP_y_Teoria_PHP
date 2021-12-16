@@ -14,6 +14,10 @@ include_once 'header.php';
     <div id="content">
         <h3><a class="cat-link" href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'>CATEGORÍAS --> </a>
             <?php echo $category_name->category_name ?></h3>
+        <a class="a-button"
+           href='writte-topic.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>'>
+            Nuevo tema <img id="" src="..\png\write.png">
+        </a>
         <ul>
             <?php foreach ($comments as $topic) : ?>
                 <a class="cat-link"
@@ -33,15 +37,20 @@ include_once 'header.php';
                             <tr>
                                 <td class="cat-item__content__column1 second-row">
                                     <?php $user = UserController::get_user_by_id($topic->user_id) ?>
-                                    <p>Por: <strong
-                                                class="user-name"><?php echo $user->user_nick . " - " ?></strong><?php echo $topic->topic_date ?>
+                                    <p>Por: <strong class="user-name"><?php echo $user->user_nick . " - " ?></strong>
+                                        <?php echo $topic->topic_date ?>
                                     </p>
                                 </td>
                                 <td class="cat-item__content__column2 second-row">
-                                    <a class="" href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'><img
-                                                id="" src="..\png\delete.png"></a>
-                                    <a class="" href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'><img
-                                                id="" src="..\png\write.png"></a>
+                                    <a class="img-button__topics"
+                                       href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'>
+                                        <img id="" src="..\png\delete.png">
+                                    </a>
+                                    <a class="img-button__topics"
+                                       href='writte-topic.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=
+                                       <?php echo $topic->category_id ?>'>
+                                        <img id="" alt="Nueva categoria" src="..\png\write.png">
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -49,7 +58,7 @@ include_once 'header.php';
                 </a>
             <?php endforeach; ?>
         </ul>
-        <button>Nuevo tema <img id="" src="..\png\write.png"></button>
+        <button class="btn-top-com"></button>
     </div><!-- content -->
 
 <?php

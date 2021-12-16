@@ -34,4 +34,9 @@ class CommentsController
     {
         return CommentsModel::get_count_comments_by_topic_id($topic_id);
     }
+
+    public function register_comment($comment_text, $user_id, $topic_id)
+    {
+        return CommentsModel::register_comment($comment_text, $user_id, $topic_id);
+    }
 }

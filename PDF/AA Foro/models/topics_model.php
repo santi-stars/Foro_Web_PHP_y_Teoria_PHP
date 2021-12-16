@@ -203,5 +203,53 @@ class TopicsModel
             return Conexion::mensajes($e->getCode());
         }
     }
+
+    public static function get_last_topic_id()
+    {
+        try {
+            $conexion = Conexion::conexion_start();
+
+//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT MAX(`topic_id`) AS `last_id` FROM `topics`";
+            $response = $conexion->prepare($sql);
+            $response->execute();
+
+            $conexion = null;
+
+            return $response->fetch(PDO::FETCH_OBJ);
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
+
+    public static function register_topic($topic_name, $user_id, $category_id)
+    {
+        try {
+
+            $conexion = Conexion::conexion_start();
+
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "INSERT INTO `topics` (`topic_name`, `user_id`, `category_id`) VALUES (:topic_name, :user_id, :category_id)";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':topic_name', $topic_name);
+            $response->bindValue(':user_id', $user_id);
+            $response->bindValue(':category_id', $category_id);
+            $response->execute();
+            $conexion = null;
+
+            return true;
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
 }//end clase
 ?>

@@ -179,4 +179,29 @@ class CommentsModel
             return Conexion::mensajes($e->getCode());
         }
     }
+
+    public static function register_comment($comment_text, $user_id, $topic_id)
+    {
+        try {
+
+            $conexion = Conexion::conexion_start();
+
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "INSERT INTO `comments` (`comment_text`, `user_id`, `topic_id`) VALUES (:comment_text, :user_id, :topic_id)";
+            $response = $conexion->prepare($sql);
+            $response->bindValue(':comment_text', $comment_text);
+            $response->bindValue(':user_id', $user_id);
+            $response->bindValue(':topic_id', $topic_id);
+            $response->execute();
+            $conexion = null;
+
+            return true;
+
+        } catch (PDOException $e) {
+            return Conexion::mensajes($e->getCode());
+        }
+    }
 }

@@ -194,6 +194,11 @@ class UserController
         }
     }
 
+    public function get_user_id_by_user_nick($user_nick)
+    {
+        return UsersModel::get_user_id_by_user_nick($user_nick);
+    }
+
     public function cryptconmd5($password)
     {
         require_once '..\models\users_model.php';
