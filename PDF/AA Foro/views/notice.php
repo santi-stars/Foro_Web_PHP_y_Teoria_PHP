@@ -2,6 +2,14 @@
 require_once '..\controllers\session_controller.php';
 $session = new SessionController();
 
+define ('DEFAULT_FOLDER', "..\index.php");
+
+define ('DEFAULT_CAT', "");
+
+$cat = DEFAULT_CAT;
+if ( !empty ( $_GET[ 'category' ] ) )
+    $cat = "&cat_id=" . $_GET [ 'category' ];
+
 switch ($_GET['notice']) {
     case 'registered':
         $message = "El registro de usuario se ha registrado con exito! Enhorabuena!!!";
@@ -42,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- se obtiene del enlace el valor de sessionExists para mostrar un contenido u otro -->
         <?php $sessionExists = $_GET['sessionExists']; ?>
 
-        <!-- se mostrará un mensaje de bienvenida si la sesión está iniciada -->
         <div id="userbar">
             <?php if ($sessionExists === "true") : ?>
                 <a class="item" href=''><?php echo "Bienvenido " ?><strong

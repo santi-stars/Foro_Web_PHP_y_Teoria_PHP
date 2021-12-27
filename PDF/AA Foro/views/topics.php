@@ -43,7 +43,8 @@ include_once 'header.php';
                                 </td>
                                 <td class="cat-item__content__column2 second-row">
                                     <a class="img-button__topics"
-                                       href='home.php?sessionExists=<?php echo $_GET['sessionExists'] ?>'>
+                                       href='delete_topic.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=
+                                       <?php echo $topic->category_id ?>&topic_id=<?php echo $topic->topic_id ?>'>
                                         <img id="" src="..\png\delete.png">
                                     </a>
                                     <a class="img-button__topics"
@@ -58,7 +59,6 @@ include_once 'header.php';
                 </a>
             <?php endforeach; ?>
         </ul>
-        <button class="btn-top-com"></button>
     </div><!-- content -->
 
 <?php

@@ -305,6 +305,11 @@ textarea {
     height: 200px;
 }
 
+.warning{
+    color: #ff0000;
+    text-align: center;
+}
+
 .hidden {
     visibility: hidden;
 }

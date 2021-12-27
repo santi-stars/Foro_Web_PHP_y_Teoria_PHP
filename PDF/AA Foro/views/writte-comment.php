@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="content">
         <div class="notice">
             <h1>Aviso</h1>
-            <p>Tiene que estar registrado para añadir un tema nuevo en nuestro foro</p>
+            <p>Tiene que estar registrado para añadir un comentario nuevo en nuestro foro</p>
         </div>
         <div id="menu"><a class="item"
                           href="topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>">Volver</a>
@@ -83,15 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php if ($empty_field == true) : ?>
                             <p class="warning">Algún campo vacío!</p>
                         <?php endif; ?>
-                        <h1>Nuevo tema</h1>
-                        <!-- Nombre de usuario -->
-                        <label for="inputUsername" class="">Título del tema:</label><br>
-                        <input id="inputUsername" name="topic_title" class="form-control" value="" autofocus><br>
-                        <!-- Descripcion del tema -->
+                        <h1>Nuevo comentario</h1>
+                        <!-- Contenido del comentario -->
                         <label for="inputPassword" class="">Descripción</label><br>
                         <textarea type="text" id="inputPassword" name="description" class="form-control"
                                   placeholder="Contraseña"
-                                  value="">
+                                  value="" autofocus>
                         </textarea><br>
                         <button class="btn-log-reg" type="submit">Registrar</button>
                     </form>
