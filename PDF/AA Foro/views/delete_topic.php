@@ -16,7 +16,7 @@ if ($sessionExists == true) {
     require_once '..\controllers\topics_controller.php';
     $user_topic_id = TopicsController::get_user_id_by_topic_id($topic_id);
     if ($user->user_id == $user_topic_id->user_id) {
-        $topic_deleted = TopicsController::delete_topic_by_id($topic_id);   // TRUE o FALSE HACER!!!!!!
+        $topic_deleted = TopicsController::delete_topic_by_id($topic_id);
     } else {
         $topic_deleted = false;
     }

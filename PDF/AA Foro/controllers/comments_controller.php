@@ -26,6 +26,11 @@ class CommentsController
         return CommentsModel::get_comments_by_topic_id($topic_id);
     }
 
+    public function get_user_id_by_comment_id($comment_id)
+    {
+        return CommentsModel::get_user_id_by_comment_id($comment_id);
+    }
+
     /**
      * @param $topic_id
      * @return array|false|Object|PDO|String
@@ -38,5 +43,10 @@ class CommentsController
     public function register_comment($comment_text, $user_id, $topic_id)
     {
         return CommentsModel::register_comment($comment_text, $user_id, $topic_id);
+    }
+
+    public function delete_comment_by_id($comment_id)
+    {
+        return CommentsModel::delete_comment_by_id($comment_id);
     }
 }

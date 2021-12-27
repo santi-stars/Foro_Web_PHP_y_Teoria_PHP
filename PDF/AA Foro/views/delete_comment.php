@@ -7,16 +7,17 @@ $sessionExists = $_GET['sessionExists'];
 if ($sessionExists == true) {
     $cat_id = trim($_GET['cat_id']);
     $topic_id = trim($_GET['topic_id']);
+    $comment_id = trim($_GET['comment_id']);
     // recuperamos el id del usuario con el nombre de usuario
     require_once '..\controllers\users_controller.php';
     $user = UserController::get_user_id_by_user_nick($_SESSION['user']);
-    // Eliminamos el tema con su id tema, su id categoria y el usuario que lo elimina
-    require_once '..\controllers\topics_controller.php';
-    $user_topic_id = TopicsController::get_user_id_by_topic_id($topic_id);
-    if ($user->user_id == $user_topic_id->user_id) {
-        $topic_deleted = TopicsController::delete_comment_by_id($topic_id);   // TRUE o FALSE HACER!!!!!!
+    // Eliminamos el comentario con su id comentario, su id categoria y el usuario que lo elimina
+    require_once '..\controllers\comments_controller.php';
+    $user_comment_id = CommentsController::get_user_id_by_comment_id($comment_id);  // HACER
+    if ($user->user_id == $user_comment_id->user_id) {
+        $comment_deleted = CommentsController::delete_comment_by_id($comment_id);   // HACER
     } else {
-        $topic_deleted = false;
+        $comment_deleted = false;
     }
 }
 
@@ -56,24 +57,22 @@ if ($sessionExists == true) {
         <div class="notice">
             <?php if ($sessionExists === "false") { ?>
                 <h1>Aviso</h1>
-                <p>Tiene que estar registrado para eliminar un tema en nuestro foro</p><br><br>
+                <p>Tiene que estar registrado para eliminar un comentario en nuestro foro</p><br><br>
             <?php } ?>
             <?php if ($sessionExists === "true") { ?>
-                <?php if ($topic_deleted == true) { ?>
-                    <h1>Tema eliminado</h1>
-                    <p>El tema se ha eliminado correctamente!</p><br><br>
+                <?php if ($comment_deleted == true) { ?>
+                    <h1>Comentario eliminado</h1>
+                    <p>El comentario se ha eliminado correctamente!</p><br><br>
                 <?php } ?>
 
-                <?php if ($topic_deleted == false) { ?>
+                <?php if ($comment_deleted == false) { ?>
                     <h1>Aviso</h1>
-                    <p>Tienes que ser el creador del tema para eliminarlo!</p><br><br>
-                    <?php
-
-                    echo "<p>". $user->user_id . $user_topic_id . "</p><br><br>";
-                } ?>
+                    <p>Tienes que ser el creador del comentario para eliminarlo!</p><br><br>
+                    <?php } ?>
             <?php } ?>
             <div id="menu boton-volver"><a class="item"
-                                           href="topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>">Volver</a>
+                                           href="comments.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=
+                                           <?php echo $_GET['cat_id'] ?>&topic_id=<?php echo $_GET['topic_id'] ?>">Volver</a>
             </div><!-- menu boton-volver -->
         </div><!--notice -->
     </div><!-- content -->

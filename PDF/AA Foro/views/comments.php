@@ -17,6 +17,10 @@ include_once 'header.php';
             <a class="cat-link"
                href='topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id']; ?>'
             ><?php echo $category_name->category_name . " --> " ?></a><?php echo $topic->topic_name ?></h3>
+        <a class="a-button"
+           href='writte-comment.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>'>
+            Nuevo comentario <img id="" src="..\png\write.png">
+        </a>
         <ul>
             <?php foreach ($comments as $comment) : ?>
                 <div id="cat-item">
@@ -51,7 +55,6 @@ include_once 'header.php';
                 </div>
             <?php endforeach; ?>
         </ul>
-        <button>Escribe tu mensaje <img id="" src="..\png\reply.png"></button>
     </div><!-- content -->
 
 <?php

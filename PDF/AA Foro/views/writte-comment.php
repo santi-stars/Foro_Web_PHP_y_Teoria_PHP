@@ -7,21 +7,17 @@ $empty_field = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $topic_name = trim($_POST['topic_title']);
     $cat_id = trim($_GET['cat_id']);
-    $comment_text = trim($_POST['description']);
-    if ($topic_name != "" && $comment_text != "") {
+    $topic_id = trim($_GET['topic_id']);
+    $comment_text = trim($_POST['comment']);
+    if ($comment_text != "") {
         // recuperamos el id del usuario con el nombre de usuario
         require_once '..\controllers\users_controller.php';
         $user = UserController::get_user_id_by_user_nick($_SESSION['user']);
-        // registramos el nuevo tema con su categoria y el usuario que lo registra
-        require_once '..\controllers\topics_controller.php';
-        TopicsController::register_topic($topic_name, $user->user_id, $cat_id);
-        // recuperamos el último id para ingresar el primer mensaje del tema a la vez que registra el tema
-        $topic = TopicsController::get_last_topic_id();
+        // registramos el nuevo comentario con su id de tema y el usuario que lo registra
         require_once '..\controllers\comments_controller.php';
-        CommentsController::register_comment($comment_text, $user->user_id, $topic->last_id);
-        header("location: topics.php?sessionExists=" . $_GET['sessionExists'] . "&cat_id=" . $cat_id);
+        CommentsController::register_comment($comment_text, $user->user_id, $topic_id);
+        header("location: comments.php?sessionExists=" . $_GET['sessionExists'] . "&cat_id=" . $cat_id . "&topic_id=" . $topic_id);
     } else {
         $empty_field = true;
     }
@@ -69,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Tiene que estar registrado para añadir un comentario nuevo en nuestro foro</p>
         </div>
         <div id="menu"><a class="item"
-                          href="topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>">Volver</a>
+                          href="comments.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=
+                          <?php echo $_GET['cat_id'] ?>&topic_id=<?php echo $_GET['topic_id'] ?>">Volver</a>
         </div><!-- content -->
         <?php }
         ?>
@@ -77,7 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div id="content">
                 <div class="notice">
                     <form class="login-form"
-                          action="writte-topic.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>"
+                          action="writte-comment.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=
+                          <?php echo $_GET['cat_id'] ?>&topic_id=<?php echo $_GET['topic_id'] ?>"
                           method="POST">
                         <br>
                         <?php if ($empty_field == true) : ?>
@@ -86,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <h1>Nuevo comentario</h1>
                         <!-- Contenido del comentario -->
                         <label for="inputPassword" class="">Descripción</label><br>
-                        <textarea type="text" id="inputPassword" name="description" class="form-control"
+                        <textarea type="text" name="comment" class="form-control"
                                   placeholder="Contraseña"
                                   value="" autofocus>
                         </textarea><br>
@@ -94,7 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </form>
                 </div>
                 <div id="menu"><a class="item"
-                                  href="topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>">Volver</a>
+                                  href="comments.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=
+                                  <?php echo $_GET['cat_id'] ?>&topic_id=<?php echo $_GET['topic_id'] ?>">Volver</a>
                 </div>
             </div><!-- content -->
         <?php }
