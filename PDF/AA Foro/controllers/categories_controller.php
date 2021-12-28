@@ -22,6 +22,4 @@ class CategoriesController
     {
         return CategoriesModel::get_category_by_id($cat_id);
     }
-}//end Clase
-
-?>
+}

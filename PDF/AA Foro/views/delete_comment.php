@@ -34,7 +34,6 @@ if ($sessionExists == true) {
     </head>
 <body>
     <img id="fondo-header" src="..\PNG\header_foro_blasco_bikes.png">
-    <!--<h1>Foro Blasco Bikes</h1>-->
 <div id="wrapper">
     <div id="menu">
         <a class="item" href="..\index.php">Inicio</a>
@@ -43,7 +42,7 @@ if ($sessionExists == true) {
         <div id="userbar">
             <?php if ($sessionExists === "true") : ?>
                 <a class="item" href=''><?php echo "Bienvenido " ?><strong
-                        class="user-name"> <?php echo $session->get('user'); ?></strong></a> -
+                            class="user-name"> <?php echo $session->get('user'); ?></strong></a> -
                 <a class="item" href='home.php?sessionExists=false'>Cerrar sesión</a>
             <?php endif; ?>
             <?php if ($sessionExists === "false") : ?>
@@ -57,7 +56,7 @@ if ($sessionExists == true) {
         <div class="notice">
             <?php if ($sessionExists === "false") { ?>
                 <h1>Aviso</h1>
-                <p>Tiene que estar registrado para eliminar un comentario en nuestro foro</p><br><br>
+                <p>Tiene que estar registrado y ser el autor para eliminar un comentario en nuestro foro</p><br><br>
             <?php } ?>
             <?php if ($sessionExists === "true") { ?>
                 <?php if ($comment_deleted == true) { ?>
@@ -68,7 +67,7 @@ if ($sessionExists == true) {
                 <?php if ($comment_deleted == false) { ?>
                     <h1>Aviso</h1>
                     <p>Tienes que ser el creador del comentario para eliminarlo!</p><br><br>
-                    <?php } ?>
+                <?php } ?>
             <?php } ?>
             <div id="menu boton-volver"><a class="item"
                                            href="comments.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=

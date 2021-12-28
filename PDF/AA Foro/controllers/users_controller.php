@@ -1,9 +1,8 @@
 <?php
-// set_include_path( 'C:\xampp\htdocs\Teoria\PDF\AA Foro' );
+
 require_once '..\models\users_model.php';
 require_once '..\models\conexion\conexion.php';
-// el SessionController responde a eventos, generalmente acciones del usuario sobre la vista,
-// e invoca peticiones al models cuando se hace alguna solicitud sobre la información
+
 class UserController
 {
     private $conexion;
@@ -18,7 +17,6 @@ class UserController
         return UsersModel::get_user_by_id($user_id);
     }
 
-// USER_CONTROLER---------------------------------------------------------------------------------------------------
     public function register($usernick, $email, $md5password)
     {
         // se reciben los datos que el usuario ha introducido en la vista y se envían al models para que registre al usuario
@@ -119,7 +117,6 @@ class UserController
         return $error;
     }
 
-// USER_CONTROLER
     public function validationRequired($input)
     {
         // si el campo está vacío, devuelve un error
@@ -130,7 +127,6 @@ class UserController
         }
     }
 
-// USER_CONTROLER
     public function validationMin($input)
     {
         // si el campo no llega al mínimo, devuelve un error
@@ -141,7 +137,6 @@ class UserController
         }
     }
 
-// USER_CONTROLER
     public function validationMax($input)
     {
         // si el campo se pasa del máximo permitido, devuelve un error
@@ -152,7 +147,6 @@ class UserController
         }
     }
 
-// USER_CONTROLER
     public function validationPassword($input)
     {
         // la contraseña debe contener al menos una mayúscula, una minúscula y un número.
@@ -170,8 +164,6 @@ class UserController
 
     public function userPassCheck($usernick, $md5password)
     {
-        require_once '..\models\users_model.php';
-
         $num_of_rows = UsersModel::check_user($usernick, $md5password);
 
         if ($num_of_rows > 0) {
@@ -183,8 +175,6 @@ class UserController
 
     public function inputExists($input, $value)
     {
-        require_once '..\models\users_model.php';
-
         $num_of_rows = UsersModel::inputExists($input, $value);
 
         if ($num_of_rows->count > 0) {
@@ -201,8 +191,6 @@ class UserController
 
     public function cryptconmd5($password)
     {
-        require_once '..\models\users_model.php';
-
         return UsersModel::cryptconmd5($password);
     }
 }

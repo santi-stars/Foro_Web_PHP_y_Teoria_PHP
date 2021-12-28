@@ -66,60 +66,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a class="item" href="..\index.php">Inicio</a>
     </div>
 </div>
-<!-- al presenter se le enviará la información una vez validada. $_SERVER["PHP_SELF"] es una variable súper global
-que devuelve el nombre de archivo del script que se está ejecutando actualmente. Así envía los datos del formulario
-enviado a la propia página, en lugar de saltar a una página diferente.
-De esta manera, el usuario recibirá mensajes de error en la misma página que el formulario-->
 <div id="content">
-<form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+    <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 
-    <h1 class="register">Registro</h1>
-    <!-- ----------- -->
-    <!-- Nombre de usuario -->
-    <!-- ----------- -->
-    <label for="inputUsername" class="sr-only">Nombre de usuario:</label><br>
-    <input id="inputUsername" name="new-username" class="form-control" placeholder="Username"
-           value="<?php fillField('new-username') ?>" autofocus>
+        <h1 class="register">Registro</h1>
 
-    <!-- Mensaje de error usuario -->
-    <div class="error-message-wrapper">
-        <?php if ($nameErr != "") : ?>
-            <span><?php echo "* " . $nameErr; ?></span>
-        <?php endif; ?>
-    </div>
+        <!-- Nombre de usuario -->
+        <label for="inputUsername" class="sr-only">Nombre de usuario:</label><br>
+        <input id="inputUsername" name="new-username" class="form-control" placeholder="Username"
+               value="<?php fillField('new-username') ?>" autofocus>
 
-    <!-- ----------- -->
-    <!-- Email -->
-    <!-- ----------- -->
-    <label for="inputEmail" class="sr-only">Email</label><br>
-    <input id="inputEmail" name="new-email" class="form-control" placeholder="Email"
-           value="<?php fillField('new-email') ?>">
+        <!-- Mensaje de error usuario -->
+        <div class="error-message-wrapper">
+            <?php if ($nameErr != "") : ?>
+                <span><?php echo "* " . $nameErr; ?></span>
+            <?php endif; ?>
+        </div>
 
-    <!-- Mensaje de error email -->
-    <div class="error-message-wrapper">
-        <?php if ($emailErr != "") : ?>
-            <?php echo "* " . $emailErr; ?>
-        <?php endif; ?>
-    </div>
+        <!-- Email -->
+        <label for="inputEmail" class="sr-only">Email</label><br>
+        <input id="inputEmail" name="new-email" class="form-control" placeholder="Email"
+               value="<?php fillField('new-email') ?>">
 
-    <!-- ----------- -->
-    <!-- Contraseña -->
-    <!-- ----------- -->
-    <label for="inputPassword" class="sr-only">Password</label><br>
-    <input type="password" id="inputPassword" name="new-password" class="form-control" placeholder="Contraseña"
-           value="<?php fillField('new-password') ?>">
+        <!-- Mensaje de error email -->
+        <div class="error-message-wrapper">
+            <?php if ($emailErr != "") : ?>
+                <?php echo "* " . $emailErr; ?>
+            <?php endif; ?>
+        </div>
 
-    <!-- Mensaje de error contraseña -->
-    <div class="error-message-wrapper">
-        <?php if ($passErr != "") : ?>
-            <?php echo "* " . $passErr; ?>
-        <?php endif; ?>
-    </div>
+        <!-- Contraseña -->
+        <label for="inputPassword" class="sr-only">Password</label><br>
+        <input type="password" id="inputPassword" name="new-password" class="form-control" placeholder="Contraseña"
+               value="<?php fillField('new-password') ?>">
 
-    <button class="btn-log-reg" type="submit">Registrarse</button>
-    <div><a class="link" href='login.php'>Inicia sesión</a></div>
-</form>
-    </div>
+        <!-- Mensaje de error contraseña -->
+        <div class="error-message-wrapper">
+            <?php if ($passErr != "") : ?>
+                <?php echo "* " . $passErr; ?>
+            <?php endif; ?>
+        </div>
+
+        <button class="btn-log-reg" type="submit">Registrarse</button>
+        <div><a class="link" href='login.php'>Inicia sesión</a></div>
+    </form>
+</div>
 <?php
 // FOOTER
 include_once 'footer.php';

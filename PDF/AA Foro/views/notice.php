@@ -43,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <img id="fondo-header" src="..\PNG\header_foro_blasco_bikes.png">
-<!--<h1>Foro Blasco Bikes</h1>-->
 <div id="wrapper">
     <div id="menu">
         <a class="item" href="..\index.php">Volver</a>

@@ -18,7 +18,8 @@ include_once 'header.php';
                href='topics.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id']; ?>'
             ><?php echo $category_name->category_name . " --> " ?></a><?php echo $topic->topic_name ?></h3>
         <a class="a-button"
-           href='writte-comment.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=<?php echo $_GET['cat_id'] ?>'>
+           href='writte-comment.php?sessionExists=<?php echo $_GET['sessionExists'] ?>&cat_id=
+           <?php echo $_GET['cat_id'] ?>&topic_id=<?php echo $topic->topic_id ?>'>
             Nuevo comentario <img id="" src="..\png\write.png">
         </a>
         <ul>

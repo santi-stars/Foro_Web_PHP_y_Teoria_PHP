@@ -26,14 +26,52 @@ class CategoriesModel
         $this->cat_desc = $cat_desc;
     }
 
-    public function getCatId()
+    /**
+     * @return String
+     */
+    public function getCatId(): string
     {
         return $this->cat_id;
     }
 
-    public function getCatDescription()
+    /**
+     * @param String $cat_id
+     */
+    public function setCatId(string $cat_id)
+    {
+        $this->cat_id = $cat_id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getCatName(): string
+    {
+        return $this->cat_name;
+    }
+
+    /**
+     * @param String $cat_name
+     */
+    public function setCatName(string $cat_name)
+    {
+        $this->cat_name = $cat_name;
+    }
+
+    /**
+     * @return String
+     */
+    public function getCatDesc(): string
     {
         return $this->cat_desc;
+    }
+
+    /**
+     * @param String $cat_desc
+     */
+    public function setCatDesc(string $cat_desc)
+    {
+        $this->cat_desc = $cat_desc;
     }
 
     /**
@@ -52,7 +90,6 @@ class CategoriesModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -76,7 +113,6 @@ class CategoriesModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }

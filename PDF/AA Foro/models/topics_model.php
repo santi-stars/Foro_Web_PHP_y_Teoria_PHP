@@ -114,7 +114,6 @@ class TopicsModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -137,7 +136,6 @@ class TopicsModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -161,7 +159,6 @@ class TopicsModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -185,7 +182,6 @@ class TopicsModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -209,7 +205,6 @@ class TopicsModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -232,7 +227,6 @@ class TopicsModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -281,7 +275,6 @@ class TopicsModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -299,5 +292,4 @@ class TopicsModel
             return Conexion::mensajes($e->getCode());
         }
     }
-}//end clase
-?>
+}

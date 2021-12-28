@@ -85,13 +85,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php endif; ?>
                         <h1>Nuevo tema</h1>
                         <!-- Nombre de usuario -->
-                        <label for="inputUsername" class="">Título del tema:</label><br>
-                        <input id="inputUsername" name="topic_title" class="form-control" value="" autofocus><br>
+                        <label for="topic_title" class="">Título del tema:</label><br>
+                        <input name="topic_title" class="form-control" value="" autofocus><br>
                         <!-- Descripcion del tema -->
-                        <label for="inputPassword" class="">Descripción</label><br>
-                        <textarea type="text" id="inputPassword" name="description" class="form-control"
-                                  placeholder="Contraseña"
-                                  value="">
+                        <label for="description" class="">Descripción</label><br>
+                        <textarea type="text" name="description" class="form-control">
                         </textarea><br>
                         <button class="btn-log-reg" type="submit">Registrar</button>
                     </form>

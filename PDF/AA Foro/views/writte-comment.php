@@ -83,10 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php endif; ?>
                         <h1>Nuevo comentario</h1>
                         <!-- Contenido del comentario -->
-                        <label for="inputPassword" class="">Descripción</label><br>
-                        <textarea type="text" name="comment" class="form-control"
-                                  placeholder="Contraseña"
-                                  value="" autofocus>
+                        <label for="comment" class="">Descripción</label><br>
+                        <textarea type="text" name="comment" class="form-control" autofocus>
                         </textarea><br>
                         <button class="btn-log-reg" type="submit">Registrar</button>
                     </form>

@@ -35,7 +35,6 @@ if ($sessionExists == true) {
     </head>
 <body>
     <img id="fondo-header" src="..\PNG\header_foro_blasco_bikes.png">
-    <!--<h1>Foro Blasco Bikes</h1>-->
 <div id="wrapper">
     <div id="menu">
         <a class="item" href="..\index.php">Inicio</a>
@@ -58,7 +57,7 @@ if ($sessionExists == true) {
         <div class="notice">
             <?php if ($sessionExists === "false") { ?>
                 <h1>Aviso</h1>
-                <p>Tiene que estar registrado para eliminar un tema en nuestro foro</p><br><br>
+                <p>Tiene que estar registrado y ser el autor para eliminar un tema en nuestro foro</p><br><br>
             <?php } ?>
             <?php if ($sessionExists === "true") { ?>
                 <?php if ($topic_deleted == true) { ?>

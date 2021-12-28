@@ -61,10 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a class="item" href="..\index.php">Inicio</a>
     </div>
 </div>
-<!-- al presenter se le enviará la información una vez validada. $_SERVER["PHP_SELF"] es una variable súper global
-que devuelve el nombre de archivo del script que se está ejecutando actualmente. Así envía los datos del formulario
-enviado a la propia página, en lugar de saltar a una página diferente.
-De esta manera, el usuario recibirá mensajes de error en la misma página que el formulario-->
 <div id="content">
     <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <br>
@@ -81,9 +77,7 @@ De esta manera, el usuario recibirá mensajes de error en la misma página que e
             <?php endif; ?>
         </div>
 
-        <!-- ----------- -->
         <!-- Contraseña -->
-        <!-- ----------- -->
         <label for="inputPassword" class="">Password</label><br>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Contraseña"
                value="<?php fillField('password') ?>">

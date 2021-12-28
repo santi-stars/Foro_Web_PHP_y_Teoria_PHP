@@ -197,13 +197,11 @@ class UsersModel
         }
     }
 
-    // SE USA****************************************************
     public static function check_user($user_nick, $password)
     {
         try {
             $conexion = Conexion::conexion_start();
 
-            //Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -213,8 +211,6 @@ class UsersModel
             $response->bindValue(':user_nick', $user_nick);
             $response->bindValue(':password', $password);
             $response->execute();
-// array(':user_nick' => $user_nick, ':password' => $password) BORRAR
-            // Si el array no está vacío, crea y devuelve el número de filas que será 1.
 
             return $response->rowCount();
 
@@ -232,7 +228,6 @@ class UsersModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -255,7 +250,6 @@ class UsersModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -279,7 +273,6 @@ class UsersModel
         try {
             $conexion = Conexion::conexion_start();
 
-//Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -304,7 +297,6 @@ class UsersModel
         try {
             $conexion = Conexion::conexion_start();
 
-            //Si $conexion es de tipo String, es porque se produjo una excepción. Para la ejecución de la función devolviendo el mensaje de la excepción.
             if (gettype($conexion) == "string") {
                 return $conexion;
             }
@@ -479,7 +471,7 @@ class UsersModel
      * @param String $password
      * @return String
      */
-    // SE USA****************************************************
+
     public static function cryptconmd5($password)
     {
         //Crea un salt

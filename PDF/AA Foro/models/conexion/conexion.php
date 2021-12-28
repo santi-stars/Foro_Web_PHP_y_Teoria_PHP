@@ -31,28 +31,6 @@ class Conexion
 
     /**
      * function
-     * Pruebaconexion()
-     * Intenta establecer la conexion cone el gestor de base de datos sin acceder a ninguna ddbb.
-     * Devuelve un objeto PDO y, en caso de no ser posible la conexion, devuelve mensaje de error
-     *
-     * conexion.php                 ***BORRAR SI NO SE NECESITA!!!***
-     *
-     * @return Object
-     */
-    public static function prueba_conexion()
-    {
-        try {
-            require_once("ddbb.php");
-            $conexion = new PDO("mysql:host=" . HOST, USER, PASS); //Conectar::Conexion();
-            return $conexion;
-        } catch (PDOException $e) {
-            return self::mensajes($e->getCode());
-        }
-
-    }
-
-    /**
-     * function
      * mensajes($e)
      *
      * Recibe como parámetro el código de PDOException y devuelve el mensaje de error correspondiente.

@@ -13,9 +13,6 @@ class CommentsController
     }
 
 
-    /**
-     * @return array
-     */
     public function comments_list()
     {
         return CommentsModel::get_comments();
@@ -31,10 +28,6 @@ class CommentsController
         return CommentsModel::get_user_id_by_comment_id($comment_id);
     }
 
-    /**
-     * @param $topic_id
-     * @return array|false|Object|PDO|String
-     */
     public function get_count_comments_by_topic_id($topic_id)
     {
         return CommentsModel::get_count_comments_by_topic_id($topic_id);

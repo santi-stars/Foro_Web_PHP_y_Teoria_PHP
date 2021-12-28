@@ -226,6 +226,7 @@ h3 {
 
 .form-control {
     margin-bottom: 12px;
+    text-align: left;
 }
 
 .btn-log-reg {
