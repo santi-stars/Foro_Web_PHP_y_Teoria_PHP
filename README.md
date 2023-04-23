@@ -1,6 +1,6 @@
 # Foro Web PHP y Teoria_PHP
 
--Foro de motos HTML, CSS y PHP\
+-Foro de motos HTML, CSS y PHP en carpeta:\
 https://github.com/santi-stars/Teoria_PHP/tree/master/PDF/AA%20Foro 
 
 En la implementación en PHP se han tenido en cuenta los siguientes apartados:\
